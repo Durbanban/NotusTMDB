@@ -18,34 +18,36 @@ export class EditTableComponent implements OnInit {
   }
   private _color = "light";
 
-  constructor(private filmsService : FilmsService) {}
+  constructor(private filmsService: FilmsService) { }
 
-  listadoFilms : Films[] = [];
-  listadoCredits : Cast[] = [];
-  idFilm : number;
-  listaCuatroImg : Cast[] = [];
+  listadoFilms: Films[] = [];
+  actors: Cast[] = [];
+  actorsFour: Cast[] = [];
 
   ngOnInit(): void {
     this.filmsService.getFilms().subscribe((a) => {
       this.listadoFilms = a.results
-    })    
+
+      this.filmsService.getFilmCredits(this.listadoFilms[1].id).subscribe((a) => {
+        this.actors = a.cast
+      
+        for (let i = 0; i < 4; i++) {
+          this.actorsFour.push(this.actors[i])
+        }
+        console.log(this.actorsFour)
+      })
+    })
   }
 
   getFilmImg(film: Films) {
     return `https://image.tmdb.org/t/p/w500${film.poster_path}`;
   }
 
-  getFilmCredits(film: Films) {
-    this.filmsService.getFilmCredits(film.id).subscribe((a) => {
-      this.listadoCredits = a.cast
-    })
+  getActors(film: Films) {
 
-    for (let i = 0; i < 4; i++) {
-      if (this.listadoCredits[i].department == 'Acting') {
-        this.listaCuatroImg.push(this.listadoCredits[i])
-      }
-    }
+  }
 
-    return this.listaCuatroImg
+  getActorsImg(act : Cast){
+    return `https://image.tmdb.org/t/p/w500${act.profile_path}`
   }
 }
