@@ -1,5 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { LoginAppComponent } from "./components/login-app/login-app.component";
+import { NotFoundComponent } from "./components/not-found/not-found.component";
+import { PortadaComponent } from "./components/portada/portada.component";
 
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
@@ -19,6 +22,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+
 
 const routes: Routes = [
   // admin views
@@ -46,8 +50,10 @@ const routes: Routes = [
   // no layout views
   { path: "profile", component: ProfileComponent },
   { path: "landing", component: LandingComponent },
-  { path: "", component: IndexComponent },
-  { path: "**", redirectTo: "", pathMatch: "full" },
+  { path: "loginApp", component: LoginAppComponent },
+  { path: "portada", component: PortadaComponent },
+  { path: "", component: PortadaComponent, pathMatch: 'full'},
+  { path: "**", component: NotFoundComponent}
 ];
 
 @NgModule({

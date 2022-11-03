@@ -47,6 +47,10 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { LoginAppComponent } from './components/login-app/login-app.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HttpClientModule } from "@angular/common/http";
+import { PortadaComponent } from './components/portada/portada.component';
 
 @NgModule({
   declarations: [
@@ -84,8 +88,11 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    LoginAppComponent,
+    NotFoundComponent,
+    PortadaComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
