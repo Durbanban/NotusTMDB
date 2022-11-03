@@ -53,6 +53,8 @@ import { EditTableComponent } from './components/edit-table/edit-table.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
+import { SidebarNewComponent } from "./components/sidebar-edit/sidebar.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -93,9 +95,10 @@ import { FilmDetailsComponent } from './components/film-details/film-details.com
     FilmListComponent,
     EditTableComponent,
     FilmDetailsComponent,
+    SidebarNewComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

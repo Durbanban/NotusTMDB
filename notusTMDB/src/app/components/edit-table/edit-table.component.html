@@ -2,22 +2,44 @@
     [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'">
     <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
-            <div class="relative w-full px-4 max-w-full flex-grow flex" style="width: 100%; justify-content: space-between;">
-                <h3 class="font-semibold text-lg" [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'">
+            <div class="relative w-full px-4 max-w-full flex-grow flex"
+                style="width: 100%; justify-content: space-between;">
+                <h3 class="font-semibold text-lg" [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'" style="padding-top: 10px;">
                     Películas populares
                 </h3>
+                <div style="display: flex; width: 250px; justify-content: space-around;">
+                    <input type="search" [(ngModel)]="buscarStr" [class]="!buscarBool ? 'inpSearch' : 'inpSearchOpen'">
+                    <button mat-raised-button (click)="buscar()" style="margin-left: 10px;">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </div>
                 <div>
-                    <mat-button-toggle-group class="pagination" name="paginacionActores" aria-label="Paginación de actores">
+                    <mat-button-toggle-group class="pagination" name="paginacionActores"
+                        aria-label="Paginación de actores">
                         <mat-button-toggle (click)="getFilms(1)" [disabled]="page == 1">&#60;&#60;</mat-button-toggle>
                         <mat-button-toggle (click)="getFilms(page - 1)" [disabled]="page == 1">&#60;</mat-button-toggle>
                         <ng-container *ngFor="let pagina of numPages(); let i = index">
-                            <mat-button-toggle *ngIf="i <= page && i >= page-2" [checked]="page == i+1" (click)="getFilms(i+1)">{{i+1}}</mat-button-toggle>
+                            <mat-button-toggle *ngIf="i <= page && i >= page-2" [checked]="page == i+1"
+                                (click)="getFilms(i+1)">{{i+1}}</mat-button-toggle>
                         </ng-container>
-                        <mat-button-toggle (click)="getFilms(page + 1)" [disabled]="page == totalPages">&#62;</mat-button-toggle>
-                        <mat-button-toggle (click)="getFilms(totalPages)" [disabled]="page == totalPages">&#62;&#62;</mat-button-toggle>
+                        <mat-button-toggle (click)="getFilms(page + 1)" [disabled]="page == totalPages">&#62;
+                        </mat-button-toggle>
+                        <mat-button-toggle (click)="getFilms(totalPages)" [disabled]="page == totalPages">&#62;&#62;
+                        </mat-button-toggle>
                     </mat-button-toggle-group>
                 </div>
             </div>
+        </div>
+    </div>
+    <div style="width: 100%; max-height: 300px; overflow-y: scroll;" *ngIf="buscarBool">
+        <div style="width: 100%; text-align: center;" class="contBusc" *ngFor="let pelicula of listadoAllFilm">
+            <a *ngIf="pelicula.title.toLowerCase().includes(buscarStr.toLowerCase()) && buscarStr.length > 0" [routerLink]="pelicula.id">
+                <br>
+                {{pelicula.title}}
+                <br>
+                <br>
+                <hr>
+            </a>
         </div>
     </div>
     <div class="block w-full overflow-x-auto">
@@ -64,7 +86,7 @@
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             ">
-                        Valoraciones&nbsp;&nbsp;&nbsp;<mat-icon>thumb_up</mat-icon>
+                        Valoraciones&nbsp;&nbsp;&nbsp;
                     </th>
                     <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                         [ngClass]="
@@ -86,7 +108,8 @@
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {{film.release_date}}
                     </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4" style="text-align: center;">
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+                        style="text-align: center;">
                         {{film.original_language.toUpperCase()}}
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -98,7 +121,8 @@
                             <div class="relative w-full">
                                 <div class="overflow-hidden h-2 text-xs flex rounded" style="background: lightgreen;">
                                     <div [style]="'width:'+(film.vote_average)*10+'%'"
-                                        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center" style="background: rgb(41, 167, 41);">
+                                        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center"
+                                        style="background: rgb(41, 167, 41);">
                                     </div>
                                 </div>
                             </div>
@@ -106,10 +130,13 @@
                     </td>
                     <td
                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                        <a class="flipButton" [routerLink]="film.id">Ver detalles&nbsp;<span class="arrowFlip">&#10132;</span></a>
+                        <a class="flipButton" [routerLink]="film.id">Ver detalles&nbsp;<span
+                                class="arrowFlip">&#10132;</span></a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
+<br>
+<br>
