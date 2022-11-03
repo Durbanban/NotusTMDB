@@ -20,5 +20,9 @@ yarn-error.log*
 *.sln
 *.sw?
 
+# Api_key_TMDB
+/src/environments/environment.prod.ts
+/src/environments/environment.ts
+
 package-lock.json
 commit.sh
