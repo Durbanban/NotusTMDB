@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiBaseUrl: 'https://developers.themoviedb.org/3'
 };
 
 /*
