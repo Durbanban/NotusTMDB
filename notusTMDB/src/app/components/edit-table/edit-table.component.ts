@@ -21,33 +21,26 @@ export class EditTableComponent implements OnInit {
   constructor(private filmsService: FilmsService) { }
 
   listadoFilms: Films[] = [];
-  actors: Cast[] = [];
-  actorsFour: Cast[] = [];
+  page = 1;
+  totalPages = 0
 
   ngOnInit(): void {
-    this.filmsService.getFilms().subscribe((a) => {
-      this.listadoFilms = a.results
+    this.getFilms(this.page);
+  }
 
-      this.filmsService.getFilmCredits(this.listadoFilms[1].id).subscribe((a) => {
-        this.actors = a.cast
-      
-        for (let i = 0; i < 4; i++) {
-          this.actorsFour.push(this.actors[i])
-        }
-        console.log(this.actorsFour)
-      })
-    })
+  getFilms(n : number){
+    this.filmsService.getFilms(n).subscribe((a) => {
+      this.listadoFilms = a.results
+      this.totalPages = a.total_pages
+    });
+    this.page = n;
+  }
+
+  numPages() {
+    return Array(this.totalPages);
   }
 
   getFilmImg(film: Films) {
     return `https://image.tmdb.org/t/p/w500${film.poster_path}`;
-  }
-
-  getActors(film: Films) {
-
-  }
-
-  getActorsImg(act : Cast){
-    return `https://image.tmdb.org/t/p/w500${act.profile_path}`
   }
 }

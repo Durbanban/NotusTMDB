@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { FilmDetailsComponent } from "./components/film-details/film-details.component";
 import { FilmListComponent } from "./components/film-list/film-list.component";
 
 // layouts
@@ -47,6 +48,7 @@ const routes: Routes = [
   // no layout views
   { path: "profile", component: ProfileComponent },
   { path: "films", component: FilmListComponent},
+  { path: "films/:id", component: FilmDetailsComponent},
   { path: "landing", component: LandingComponent },
   { path: "", component: IndexComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },

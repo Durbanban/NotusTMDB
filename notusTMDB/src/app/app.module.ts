@@ -52,6 +52,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { EditTableComponent } from './components/edit-table/edit-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
+import { FilmDetailsComponent } from './components/film-details/film-details.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { MaterialImportsModule } from "./material-imports/material-imports.modul
     ProfileComponent,
     FilmListComponent,
     EditTableComponent,
+    FilmDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule],
   providers: [],

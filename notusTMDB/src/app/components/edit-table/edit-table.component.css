@@ -1,0 +1,18 @@
+table tr:hover{
+    background: rgb(214, 239, 245);
+}
+
+.flipButton{
+    background: none;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.arrowFlip{
+    visibility: hidden;
+}
+
+.flipButton:hover .arrowFlip{
+    visibility: visible;
+}

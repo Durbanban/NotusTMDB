@@ -2,14 +2,26 @@
     [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'">
     <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
-            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+            <div class="relative w-full px-4 max-w-full flex-grow flex" style="width: 100%; justify-content: space-between;">
                 <h3 class="font-semibold text-lg" [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'">
                     Películas populares
                 </h3>
+                <div>
+                    <mat-button-toggle-group class="pagination" name="paginacionActores" aria-label="Paginación de actores">
+                        <mat-button-toggle (click)="getFilms(1)" [disabled]="page == 1">&#60;&#60;</mat-button-toggle>
+                        <mat-button-toggle (click)="getFilms(page - 1)" [disabled]="page == 1">&#60;</mat-button-toggle>
+                        <ng-container *ngFor="let pagina of numPages(); let i = index">
+                            <mat-button-toggle *ngIf="i <= page && i >= page-2" [checked]="page == i+1" (click)="getFilms(i+1)">{{i+1}}</mat-button-toggle>
+                        </ng-container>
+                        <mat-button-toggle (click)="getFilms(page + 1)" [disabled]="page == totalPages">&#62;</mat-button-toggle>
+                        <mat-button-toggle (click)="getFilms(totalPages)" [disabled]="page == totalPages">&#62;&#62;</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
             </div>
         </div>
     </div>
     <div class="block w-full overflow-x-auto">
+        <mat-progress-bar mode="query" *ngIf="listadoFilms.length<=0"></mat-progress-bar>
         <!-- Projects table -->
         <table class="items-center w-full bg-transparent border-collapse">
             <thead>
@@ -44,7 +56,7 @@
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             ">
-                        Users
+                        Título original
                     </th>
                     <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                         [ngClass]="
@@ -52,7 +64,7 @@
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             ">
-                        Completion
+                        Valoraciones&nbsp;&nbsp;&nbsp;<mat-icon>thumb_up</mat-icon>
                     </th>
                     <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                         [ngClass]="
@@ -74,28 +86,19 @@
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {{film.release_date}}
                     </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        V.O.: {{film.original_language.toUpperCase()}}
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4" style="text-align: center;">
+                        {{film.original_language.toUpperCase()}}
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <div class="flex">
-                            <img [src]="'https://image.tmdb.org/t/p/w500'+actorsFour[0].profile_path" alt="..."
-                                class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow" />
-                            <img [src]="'https://image.tmdb.org/t/p/w500'+actorsFour[1].profile_path" alt="..."
-                                class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4" />
-                            <img [src]="'https://image.tmdb.org/t/p/w500'+actorsFour[2].profile_path" alt="..."
-                                class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4" />
-                            <img [src]="'https://image.tmdb.org/t/p/w500'+actorsFour[3].profile_path" alt="..."
-                                class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4" />
-                        </div>
+                        {{film.original_title}}
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <div class="flex items-center">
-                            <span class="mr-2">60%</span>
+                            <span class="mr-2">{{(film.vote_average)*10}}%</span>
                             <div class="relative w-full">
-                                <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                                    <div style="width: 60%"
-                                        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500">
+                                <div class="overflow-hidden h-2 text-xs flex rounded" style="background: lightgreen;">
+                                    <div [style]="'width:'+(film.vote_average)*10+'%'"
+                                        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center" style="background: rgb(41, 167, 41);">
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +106,7 @@
                     </td>
                     <td
                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                        <app-table-dropdown></app-table-dropdown>
+                        <a class="flipButton" [routerLink]="film.id">Ver detalles&nbsp;<span class="arrowFlip">&#10132;</span></a>
                     </td>
                 </tr>
             </tbody>
