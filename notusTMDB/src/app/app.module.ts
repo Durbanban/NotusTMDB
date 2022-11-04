@@ -98,7 +98,7 @@ import { CommonModule } from "@angular/common";
     EditTableComponent,
     FilmDetailsComponent,
     SeriesListComponent,
-    SidebarNewComponent,
+    SidebarNewComponent
   ],
   imports: [BrowserModule, CommonModule,AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule, FormsModule, ReactiveFormsModule],
   providers: [],
