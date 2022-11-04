@@ -24,6 +24,7 @@ export class PortadaComponent implements OnInit {
     private ruta: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.session = new CreateSessionDto();
     this.sessionID = localStorage.getItem('session_id');
     if(this.sessionID != null) {
       this.sessionActive = true;
