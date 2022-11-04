@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Series } from 'src/app/interfaces/series.interfaces';
+import { Series } from 'src/app/interfaces/series.interaces';
 import { SeriesService } from 'src/app/services/series.service';
 
 @Component({
@@ -9,19 +9,19 @@ import { SeriesService } from 'src/app/services/series.service';
 })
 export class SeriesListComponent implements OnInit {
 
-  SeriesList: Series[] = [];
+  seriesList: Series[] = [];
 
   constructor(private seriesService: SeriesService) { }
 
   ngOnInit(): void {
   }
 
-  getListadoSeries(series: Series){
+  getListadoSeries(id: number){
 
-    this.seriesService.getSeries(series).subscribe((resp) => {
+    this.seriesService.getSeries(id).subscribe((resp) => {
 
-      this.SeriesList = resp.genres;
-    })
+      this.seriesList = resp.results
+    });
   }
 
 }

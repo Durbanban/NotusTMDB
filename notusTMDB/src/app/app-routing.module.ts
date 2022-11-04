@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { SeriesListComponent } from "./components/series-list/series-list.component";
 
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
@@ -40,6 +41,7 @@ const routes: Routes = [
     children: [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
+      { path: "series", component: SeriesListComponent},
       { path: "", redirectTo: "login", pathMatch: "full" },
     ],
   },
