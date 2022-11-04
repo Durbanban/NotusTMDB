@@ -49,8 +49,14 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { LoginAppComponent } from './components/login-app/login-app.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { HttpClientModule } from "@angular/common/http";
 import { PortadaComponent } from './components/portada/portada.component';
+import { FilmListComponent } from './components/film-list/film-list.component';
+import { HttpClientModule } from "@angular/common/http";
+import { EditTableComponent } from './components/edit-table/edit-table.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilmDetailsComponent } from './components/film-details/film-details.component';
+import { SidebarNewComponent } from "./components/sidebar-edit/sidebar.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -91,9 +97,13 @@ import { PortadaComponent } from './components/portada/portada.component';
     LoginAppComponent,
     NotFoundComponent,
     PortadaComponent,
+    FilmListComponent,
+    EditTableComponent,
+    FilmDetailsComponent,
+    SidebarNewComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

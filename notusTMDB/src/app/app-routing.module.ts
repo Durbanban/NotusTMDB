@@ -3,6 +3,8 @@ import { Routes, RouterModule } from "@angular/router";
 import { LoginAppComponent } from "./components/login-app/login-app.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { PortadaComponent } from "./components/portada/portada.component";
+import { FilmDetailsComponent } from "./components/film-details/film-details.component";
+import { FilmListComponent } from "./components/film-list/film-list.component";
 
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
@@ -49,6 +51,8 @@ const routes: Routes = [
   },
   // no layout views
   { path: "profile", component: ProfileComponent },
+  { path: "films", component: FilmListComponent},
+  { path: "films/:id", component: FilmDetailsComponent},
   { path: "landing", component: LandingComponent },
   { path: "loginApp", component: LoginAppComponent },
   { path: "portada", component: PortadaComponent },
