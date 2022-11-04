@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CreateSessionDto } from 'src/app/dto/create-session.dto';
 import { DeleteSessionDto } from 'src/app/dto/delete-session.dto';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-portada',
@@ -78,14 +79,27 @@ export class PortadaComponent implements OnInit {
   }
 
   deleteSession(sessionID: string | null) {
-    if(sessionID != null) {
-      let sessionDelete = new DeleteSessionDto();
-      sessionDelete.session_id = sessionID;
-      this.authService.deleteSession(sessionDelete);
-      localStorage.removeItem('session_id');
-      this.sessionID = null;
-      window.location.href="http://localhost:4200/portada"
-    }
+    Swal.fire({
+      title: '¿Estás seguro que quieres cerrar sesión?',
+      text: "Podrás volver a iniciar sesión cuando quieras",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, cerrar sesión',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if(sessionID != null) {
+          let sessionDelete = new DeleteSessionDto();
+          sessionDelete.session_id = sessionID;
+          this.authService.deleteSession(sessionDelete);
+          localStorage.removeItem('session_id');
+          this.sessionID = null;
+          window.location.href="http://localhost:4200/portada"
+        }
+      }
+    })
   }
 
 }
