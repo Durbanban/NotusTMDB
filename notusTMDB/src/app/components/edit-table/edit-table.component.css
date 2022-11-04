@@ -1,0 +1,57 @@
+table tr:hover{
+    background: rgb(214, 239, 245);
+}
+
+.flipButton{
+    background: none;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.arrowFlip{
+    visibility: hidden;
+}
+
+.flipButton:hover .arrowFlip{
+    visibility: visible;
+}
+
+.inpSearch{
+    width: 0px;
+    border: 0;
+    padding: 0;
+    transition: 0.5s;
+}
+
+.inpSearchOpen{
+    background: rgb(255, 255, 255);
+    transition: 0.5s;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.inpSearchOpen:focus{
+    border: 0;
+    background: rgb(230, 230, 230);
+    outline: none;
+}
+
+.buscarB{
+    background: none;
+    border: 0;
+    padding: 0;
+}
+
+button:focus{
+    outline: none;
+}
+
+.contBusc:hover{
+    background: rgb(214, 239, 245);
+}
+
+.contBusc a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

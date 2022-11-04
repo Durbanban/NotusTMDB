@@ -48,7 +48,13 @@ import { NotificationDropdownComponent } from "./components/dropdowns/notificati
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { SeriesListComponent } from "./components/series-list/series-list.component";
+import { FilmListComponent } from './components/film-list/film-list.component';
 import { HttpClientModule } from "@angular/common/http";
+import { EditTableComponent } from './components/edit-table/edit-table.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilmDetailsComponent } from './components/film-details/film-details.component';
+import { SidebarNewComponent } from "./components/sidebar-edit/sidebar.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -86,10 +92,13 @@ import { HttpClientModule } from "@angular/common/http";
     IndexComponent,
     LandingComponent,
     ProfileComponent,
-    SeriesListComponent,
+    FilmListComponent,
+    EditTableComponent,
+    FilmDetailsComponent,
+    SidebarNewComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
