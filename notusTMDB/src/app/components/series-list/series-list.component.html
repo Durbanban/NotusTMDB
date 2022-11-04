@@ -1,3 +1,9 @@
 <h1>Lista de las series</h1>
 
-<p *ngFor="let lista of seriesList">{{lista.name}}</p>
+<div *ngFor="let item of seriesList">
+
+   <p> {{item.name}}</p>
+
+    <img [src]="getImgSeries(item)" alt="">
+    
+</div>

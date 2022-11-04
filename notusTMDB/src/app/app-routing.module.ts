@@ -43,13 +43,13 @@ const routes: Routes = [
     children: [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
-      { path: "series", component: SeriesListComponent},
       { path: "", redirectTo: "login", pathMatch: "full" },
     ],
   },
   // no layout views
   { path: "profile", component: ProfileComponent },
   { path: "films", component: FilmListComponent},
+  { path: "series", component: SeriesListComponent},
   { path: "films/:id", component: FilmDetailsComponent},
   { path: "landing", component: LandingComponent },
   { path: "", component: IndexComponent },

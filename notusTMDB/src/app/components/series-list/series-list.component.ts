@@ -14,14 +14,23 @@ export class SeriesListComponent implements OnInit {
   constructor(private seriesService: SeriesService) { }
 
   ngOnInit(): void {
+    
+    this.getListadoSeries();
+
   }
 
-  getListadoSeries(id: number){
+  getListadoSeries(){
 
-    this.seriesService.getSeries(id).subscribe((resp) => {
+    this.seriesService.getSeries().subscribe((resp) => {
 
-      this.seriesList = resp.results
+      this.seriesList = resp.results;
     });
+  }
+
+  getImgSeries(series: Series){
+
+    return `https://image.tmdb.org/t/p/w500/${series.backdrop_path}`;
+
   }
 
 }

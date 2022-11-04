@@ -54,7 +54,9 @@ import { EditTableComponent } from './components/edit-table/edit-table.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { SidebarNewComponent } from "./components/sidebar-edit/sidebar.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MaterialImportsModule } from "./material-imports/material-imports.module";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -95,9 +97,10 @@ import { FormsModule } from "@angular/forms";
     FilmListComponent,
     EditTableComponent,
     FilmDetailsComponent,
+    SeriesListComponent,
     SidebarNewComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule],
+  imports: [BrowserModule, CommonModule,AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
