@@ -57,6 +57,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { SidebarNewComponent } from "./components/sidebar-edit/sidebar.component";
 import { FormsModule } from "@angular/forms";
+import { MaterialImportsModule } from "./material-imports/material-imports.module";
 
 @NgModule({
   declarations: [
@@ -102,7 +103,7 @@ import { FormsModule } from "@angular/forms";
     FilmDetailsComponent,
     SidebarNewComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
