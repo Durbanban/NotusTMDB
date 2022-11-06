@@ -77,6 +77,20 @@
         </li>
 
         <li class="items-center">
+          <a routerLink="/series" class="text-xs uppercase py-3 font-bold block" routerLinkActive
+            #adminDashboard="routerLinkActive" [ngClass]="
+              adminDashboard.isActive
+                ? 'text-red-600 hover:text-red-700'
+                : 'text-blueGray-700 hover:text-blueGray-500'
+            ">
+            <i class="fas fa-tv mr-2 text-sm" [ngClass]="
+                adminDashboard.isActive ? 'opacity-75' : 'text-blueGray-300'
+              "></i>
+            Series
+          </a>
+        </li>
+
+        <li class="items-center">
           <a [routerLink]="['/admin/settings']" class="text-xs uppercase py-3 font-bold block" routerLinkActive
             #adminSettings="routerLinkActive" [ngClass]="
               adminSettings.isActive
