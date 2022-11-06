@@ -57,8 +57,9 @@ export class FilmDetailsComponent implements OnInit {
               this.isVal = true
               this.favIconBool = true
               this.rateValue = element.rating
-              console.log(this.ratedFilmsList, element.rating);
               this.delButtonRate = true
+            }else {
+              this.rateValue = 1
             }
           });
         })
@@ -82,7 +83,11 @@ export class FilmDetailsComponent implements OnInit {
 
   filmfav() {
     if (this.sessionID != null) {
-      this.favIconBool = !this.favIconBool
+      if (this.rateValue >= 1) {
+        this.favIconBool = true
+      }else{
+        this.favIconBool = !this.favIconBool
+      }
     } else {
       Swal.fire('Inicia sesión para valorar esta película')
     }
