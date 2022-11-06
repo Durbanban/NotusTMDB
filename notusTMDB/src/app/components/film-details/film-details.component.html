@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,6 +7,10 @@
     <title>Detalles</title>
   </head>
   <body>
+    <button mat-raised-button routerLink="/films" style="position: fixed; top:85px; left: 20px; outline: none;"><mat-icon>keyboard_backspace</mat-icon></button>
+    <app-portada></app-portada>
+    <br>
+    <br>
     <div
       style="
         width: 100%;
@@ -39,9 +43,9 @@
                   <span
                     class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
                   >
-                    22
+                    {{duracion}}H
                   </span>
-                  <span class="text-sm text-blueGray-400">Friends</span>
+                  <span class="text-sm text-blueGray-400">Duración</span>
                 </div>
                 <div class="mr-4 p-3 text-center">
                   <span
@@ -55,9 +59,19 @@
                   <span
                     class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
                   >
-                    89
+                  <button mat-raised-button (click)="filmfav()" style="outline: none;">
+                    <mat-icon *ngIf="favIconBool == false || isVal == false">star_border</mat-icon>
+                    <mat-icon *ngIf="isVal && favIconBool">star</mat-icon>
+                  </button>
+                  <div *ngIf="favIconBool == true">
+                    <input type="range" step="1" min="1" max="10" name="" id="" [(ngModel)]="rateValue">
+                    <p style="width: 100%; text-align: center;">{{rateValue}}</p>
+                    <div style="width: 100%; display: flex; justify-content: space-between;">
+                      <button mat-raised-button style="outline: none;" (click)="enviar()">Enviar</button>
+                      <button mat-raised-button style="outline: none;" *ngIf="delButtonRate" (click)="eliminarRate()"><mat-icon>remove_circle_outline</mat-icon></button>
+                    </div>
+                  </div>
                   </span>
-                  <span class="text-sm text-blueGray-400">Comments</span>
                 </div>
               </div>
             </div>
@@ -79,15 +93,15 @@
             </div>
             <div class="mb-2 text-blueGray-600 mt-10">
               <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-              Budget: {{ film.budget / 100000 }}M $
+              Budget: {{ film.budget}}$
             </div>
             <div class="mb-2 text-blueGray-600">
               <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-              University of Computer Science
+              Productora/s: <span *ngFor="let item of film.production_companies">{{item.name}}<span *ngIf="film.production_companies.indexOf(item) != film.production_companies.length-1">, </span></span>
             </div>
             <div class="mb-2 text-blueGray-600">
-                <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-                <span *ngFor="let item of film.genres">{{item.name}}, </span>
+                <i class="fas fa-film mr-2 text-lg text-blueGray-400"></i>
+                <span *ngFor="let item of film.genres">{{item.name}}<span *ngIf="film.genres.indexOf(item) != film.genres.length-1">, </span></span>
             </div>
           </div>
           <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
@@ -96,9 +110,7 @@
                 <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
                   {{ film.overview }}
                 </p>
-                <a href="javascript:void(0);" class="font-normal text-red-600">
-                  Show more
-                </a>
+                <br>
                 <div
                   style="
                     display: flex;

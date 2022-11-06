@@ -55,7 +55,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { EditTableComponent } from './components/edit-table/edit-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
-import { SidebarNewComponent } from "./components/sidebar-edit/sidebar.component";
 import { FormsModule } from "@angular/forms";
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
 
@@ -101,7 +100,6 @@ import { MaterialImportsModule } from "./material-imports/material-imports.modul
     FilmListComponent,
     EditTableComponent,
     FilmDetailsComponent,
-    SidebarNewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule, FormsModule],
   providers: [],

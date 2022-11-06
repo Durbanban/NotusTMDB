@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CreateSessionDto } from 'src/app/dto/create-session.dto';
 import { DeleteSessionDto } from 'src/app/dto/delete-session.dto';
+import { FilmDetailsResponse } from 'src/app/interfaces/filmDetails.interface';
 import { AuthService } from 'src/app/services/auth.service';
+import { FilmsService } from 'src/app/services/films.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,9 +22,9 @@ export class PortadaComponent implements OnInit {
   userName!: string;
   avatarPath!: string;
   sessionActive = false;
+  filmId : string
 
-  constructor(private authService: AuthService,
-    private ruta: ActivatedRoute) { }
+  constructor(private authService: AuthService, private ruta: ActivatedRoute, private router : Router, private filmsService : FilmsService) { }
 
   ngOnInit(): void {
     this.sessionID = localStorage.getItem('session_id');
@@ -35,6 +37,8 @@ export class PortadaComponent implements OnInit {
     }else {
       this.createSession();
     }
+
+    this.filmId = this.router.url
   }
 
   setNavbarOpen() {
@@ -48,7 +52,7 @@ export class PortadaComponent implements OnInit {
   requestToken() {
     this.authService.createRequestToken().subscribe(respuesta => {
       this.authToken = respuesta.request_token;
-      window.location.href=`https://www.themoviedb.org/authenticate/${this.authToken}?redirect_to=http://localhost:4200/portada`
+      window.location.href=`https://www.themoviedb.org/authenticate/${this.authToken}?redirect_to=http://localhost:4200${this.filmId}`
     });
   }
 
@@ -96,7 +100,7 @@ export class PortadaComponent implements OnInit {
           this.authService.deleteSession(sessionDelete);
           localStorage.removeItem('session_id');
           this.sessionID = null;
-          window.location.href="http://localhost:4200/portada"
+          window.location.href="http://localhost:4200"+this.router.url
         }
       }
     })
