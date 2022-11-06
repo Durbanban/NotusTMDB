@@ -37,8 +37,6 @@ export class PortadaComponent implements OnInit {
     }else {
       this.createSession();
     }
-
-    this.filmId = this.router.url
   }
 
   setNavbarOpen() {
@@ -52,7 +50,7 @@ export class PortadaComponent implements OnInit {
   requestToken() {
     this.authService.createRequestToken().subscribe(respuesta => {
       this.authToken = respuesta.request_token;
-      window.location.href=`https://www.themoviedb.org/authenticate/${this.authToken}?redirect_to=http://localhost:4200${this.filmId}`
+      window.location.href=`https://www.themoviedb.org/authenticate/${this.authToken}?redirect_to=http://localhost:4200${this.router.url}`
     });
   }
 
@@ -100,7 +98,12 @@ export class PortadaComponent implements OnInit {
           this.authService.deleteSession(sessionDelete);
           localStorage.removeItem('session_id');
           this.sessionID = null;
-          window.location.href="http://localhost:4200"+this.router.url
+          this.sessionActive = false;
+          if (this.router.url.endsWith('true')) {
+              window.location.href=`http://localhost:4200${this.router.url.split('?')[0]}`;
+          } else {
+              window.location.href=`http://localhost:4200${this.router.url}`;
+          }
         }
       }
     })
