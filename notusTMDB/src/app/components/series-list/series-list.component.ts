@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SeriesDetailsResponse } from 'src/app/interfaces/series-details.interfaces';
 import { Series } from 'src/app/interfaces/series.interaces';
 import { SeriesService } from 'src/app/services/series.service';
 
@@ -10,8 +12,9 @@ import { SeriesService } from 'src/app/services/series.service';
 export class SeriesListComponent implements OnInit {
 
   seriesList: Series[] = [];
+  seriesListDetails: SeriesDetailsResponse[] = [];
 
-  constructor(private seriesService: SeriesService) { }
+  constructor(private seriesService: SeriesService, router: Router) { }
 
   ngOnInit(): void {
     
@@ -32,5 +35,6 @@ export class SeriesListComponent implements OnInit {
     return `https://image.tmdb.org/t/p/w500/${series.backdrop_path}`;
 
   }
+
 
 }
