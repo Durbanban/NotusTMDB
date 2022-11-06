@@ -1,0 +1,46 @@
+<div style="background-color: brown;">
+  <app-auth-navbar></app-auth-navbar>
+  <main>
+    <section class="relative w-full h-full py-40 min-h-screen">
+      <div class="container mx-auto px-4 h-full">
+        <div class="flex content-center items-center justify-center h-full">
+          <div class="w-full lg:w-4/12 px-4">
+            <div *ngIf="sessionID == null" 
+              class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
+            >
+              <div class="rounded-t mb-0 px-6 py-6">
+                <div class="text-center mb-3">
+                  <h6 class="text-blueGray-500 text-sm font-bold">Inicia sesión con: </h6>
+                </div>
+                <div class="btn-wrapper text-center">
+                  <button (click)="requestToken()"
+                    class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
+                    type="button"
+                  >
+                    <img alt="..." class="w-5 mr-1" src="assets/img/tmdb.svg" />
+                    TMDB
+                  </button>
+                </div>
+                <hr class="mt-6 border-b-1 border-blueGray-300" />
+              </div>
+            </div>
+            <ng-container *ngIf="sessionID != null">
+              <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
+                <div class="rounded-t mb-0 px-6 py-6">
+                  <div class="text-center mb-3">
+                    <h6 class="text-blueGray-500 text-sm font-bold">Sesión ya iniciada</h6>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <div class="flex flex-wrap mt-6 relative">
+              
+              <div class="w-1/2 text-right">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
