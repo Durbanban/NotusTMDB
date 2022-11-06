@@ -58,6 +58,7 @@ import { FilmDetailsComponent } from './components/film-details/film-details.com
 import { SidebarNewComponent } from "./components/sidebar-edit/sidebar.component";
 import { FormsModule } from "@angular/forms";
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
+import { PopularActorsListComponent } from './components/popular-actors-list/popular-actors-list.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { MaterialImportsModule } from "./material-imports/material-imports.modul
     EditTableComponent,
     FilmDetailsComponent,
     SidebarNewComponent,
+    PopularActorsListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,  MaterialImportsModule,],
   providers: [],

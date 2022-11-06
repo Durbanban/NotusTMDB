@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CreateSessionDto } from 'src/app/dto/create-session.dto';
 import { DeleteSessionDto } from 'src/app/dto/delete-session.dto';
 import { AuthService } from 'src/app/services/auth.service';
@@ -21,7 +21,8 @@ export class PortadaComponent implements OnInit {
   sessionActive = false;
 
   constructor(private authService: AuthService,
-    private ruta: ActivatedRoute) { }
+    private ruta: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.sessionID = localStorage.getItem('session_id');
@@ -47,7 +48,7 @@ export class PortadaComponent implements OnInit {
   requestToken() {
     this.authService.createRequestToken().subscribe(respuesta => {
       this.authToken = respuesta.request_token;
-      window.location.href=`https://www.themoviedb.org/authenticate/${this.authToken}?redirect_to=http://localhost:4200/portada`
+      window.location.href=`https://www.themoviedb.org/authenticate/${this.authToken}?redirect_to=http://localhost:4200${this.router.url}`
     });
   }
 
@@ -84,7 +85,12 @@ export class PortadaComponent implements OnInit {
       this.authService.deleteSession(sessionDelete);
       localStorage.removeItem('session_id');
       this.sessionID = null;
-      window.location.href="http://localhost:4200/portada"
+      this.sessionActive = false;
+      if(this.router.url.endsWith('true')) {
+        window.location.href=`http://localhost:4200${this.router.url.split('?')[0]}`;
+      }else {
+        window.location.href=`http://localhost:4200${this.router.url}`;
+      }
     }
   }
 

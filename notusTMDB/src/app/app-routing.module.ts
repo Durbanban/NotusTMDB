@@ -24,6 +24,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { PopularActorsListComponent } from "./components/popular-actors-list/popular-actors-list.component";
 
 
 const routes: Routes = [
@@ -56,6 +57,7 @@ const routes: Routes = [
   { path: "landing", component: LandingComponent },
   { path: "loginApp", component: LoginAppComponent },
   { path: "portada", component: PortadaComponent },
+  { path: "actors", component: PopularActorsListComponent },
   { path: "", component: PortadaComponent, pathMatch: 'full'},
   { path: "**", component: NotFoundComponent}
 ];
