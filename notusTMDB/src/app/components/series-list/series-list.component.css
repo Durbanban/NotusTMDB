@@ -1,0 +1,19 @@
+body,html{
+    width: 100%;
+    height: max-content;
+    min-height: 100vh;
+}
+
+body{
+    background: brown;
+}
+
+.container{
+    width: 85%;
+    margin: 0 auto;
+}
+
+.super{
+    width: 85%;
+    margin-left: 15%;
+}

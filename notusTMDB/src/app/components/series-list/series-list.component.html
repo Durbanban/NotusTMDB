@@ -1,9 +1,15 @@
-<h1>Lista de las series</h1>
 
 <div *ngFor="let item of seriesList">
 
-   <p> {{item.name}}</p>
+    <app-sidebar-new></app-sidebar-new>
+    <div class="super">
+        <div class="container">
+            <p> {{item.name}}</p>
 
-    <img [src]="getImgSeries(item)" alt="">
-    
+            <img [src]="getImgSeries(item)" alt="">
+
+            <app-card-table></app-card-table>
+
+        </div>
+    </div>
 </div>
