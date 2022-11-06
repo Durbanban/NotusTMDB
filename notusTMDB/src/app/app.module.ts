@@ -101,7 +101,7 @@ import { MaterialImportsModule } from "./material-imports/material-imports.modul
     EditTableComponent,
     FilmDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,  MaterialImportsModule,],
   providers: [],
   bootstrap: [AppComponent],
 })
