@@ -57,6 +57,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { FormsModule } from "@angular/forms";
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
+import { RatedFilmsListComponent } from './components/rated-films-list/rated-films-list.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { MaterialImportsModule } from "./material-imports/material-imports.modul
     EditTableComponent,
     FilmDetailsComponent,
     SeriesListComponent,
+    RatedFilmsListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,  MaterialImportsModule],
   providers: [],
