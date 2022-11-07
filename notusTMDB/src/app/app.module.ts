@@ -60,6 +60,7 @@ import { SidebarNewComponent } from "./components/sidebar-edit/sidebar.component
 import { FormsModule } from "@angular/forms";
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
 import { CardTableSeriesComponent } from './components/card-table-series/card-table-series.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -107,7 +108,7 @@ import { CardTableSeriesComponent } from './components/card-table-series/card-ta
     SidebarNewComponent,
     CardTableSeriesComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,  MaterialImportsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule, FlexLayoutModule],
   providers: [],
   bootstrap: [AppComponent],
 })

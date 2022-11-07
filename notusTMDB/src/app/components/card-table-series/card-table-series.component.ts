@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Series } from 'src/app/interfaces/series.interaces';
+import { SeriesDetailsResponse } from 'src/app/interfaces/series-details.interfaces';
+import { SeriesService } from 'src/app/services/series.service';
+//import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-table-series',
@@ -8,11 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardTableSeriesComponent implements OnInit {
 
-seriesList = Series[] = [];
+seriesList : Series[] = [];
+seriesListDetails: SeriesDetailsResponse[] = [];
 
-  constructor() { }
+constructor(private seriesService: SeriesService) { } //router: Router
 
-  ngOnInit(): void {
-  }
+ngOnInit(): void {
+  
+  this.getListadoSeries();
+
+}
+
+getListadoSeries(){
+
+  this.seriesService.getSeries().subscribe((resp) => {
+
+    this.seriesList = resp.results;
+  });
+}
+
+getImgSeries(series: Series){
+
+  return `https://image.tmdb.org/t/p/w500/${series.backdrop_path}`;
+
+}
 
 }

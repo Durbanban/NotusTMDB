@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { SeriesDetailsResponse } from 'src/app/interfaces/series-details.interfaces';
 import { Series } from 'src/app/interfaces/series.interaces';
 import { SeriesService } from 'src/app/services/series.service';
@@ -14,7 +13,7 @@ export class SeriesListComponent implements OnInit {
   seriesList: Series[] = [];
   seriesListDetails: SeriesDetailsResponse[] = [];
 
-  constructor(private seriesService: SeriesService, router: Router) { }
+  constructor(private seriesService: SeriesService) { }
 
   ngOnInit(): void {
     
