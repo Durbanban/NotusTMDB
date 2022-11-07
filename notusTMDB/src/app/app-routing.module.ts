@@ -26,6 +26,8 @@ import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
 import { CardTableSeriesComponent } from "./components/card-table-series/card-table-series.component";
+import { PopularActorsListComponent } from "./components/popular-actors-list/popular-actors-list.component";
+import { ActorDetailsComponent } from "./components/actor-details/actor-details.component";
 
 
 const routes: Routes = [
@@ -60,6 +62,8 @@ const routes: Routes = [
   { path: "landing", component: LandingComponent },
   { path: "loginApp", component: LoginAppComponent },
   { path: "portada", component: PortadaComponent },
+  { path: "actors", component: PopularActorsListComponent },
+  { path: "actors/:id", component: ActorDetailsComponent },
   { path: "", component: PortadaComponent, pathMatch: 'full'},
   { path: "**", component: NotFoundComponent}
 ];

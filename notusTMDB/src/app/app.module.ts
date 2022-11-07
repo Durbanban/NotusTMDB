@@ -58,6 +58,8 @@ import { FilmDetailsComponent } from './components/film-details/film-details.com
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CardTableSeriesComponent } from "./components/card-table-series/card-table-series.component";
+import { PopularActorsListComponent } from './components/popular-actors-list/popular-actors-list.component';
+import { ActorDetailsComponent } from './components/actor-details/actor-details.component';
 
 @NgModule({
   declarations: [
@@ -100,9 +102,10 @@ import { CardTableSeriesComponent } from "./components/card-table-series/card-ta
     FilmListComponent,
     EditTableComponent,
     FilmDetailsComponent,
+    PopularActorsListComponent,
     SeriesListComponent,
-    CardTableSeriesComponent
-
+    CardTableSeriesComponent,
+    ActorDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule,FormsModule,ReactiveFormsModule],
   providers: [],
