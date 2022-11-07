@@ -57,6 +57,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { FormsModule } from "@angular/forms";
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
+import { PopularActorsListComponent } from './components/popular-actors-list/popular-actors-list.component';
+import { ActorDetailsComponent } from './components/actor-details/actor-details.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +101,9 @@ import { MaterialImportsModule } from "./material-imports/material-imports.modul
     FilmListComponent,
     EditTableComponent,
     FilmDetailsComponent,
+    PopularActorsListComponent,
     SeriesListComponent,
+    ActorDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,  MaterialImportsModule],
   providers: [],
