@@ -22,6 +22,7 @@ export class ActorDetailsComponent implements OnInit {
   cargarActor() {
     const actorID = Number(this.ruta.snapshot.paramMap.get('id'));
     this.actorDetailsService.getById(actorID);
+    
 
   }
 
