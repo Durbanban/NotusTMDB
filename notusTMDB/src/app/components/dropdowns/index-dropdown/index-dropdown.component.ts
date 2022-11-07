@@ -10,8 +10,14 @@ export class IndexDropdownComponent implements OnInit {
   @ViewChild("btnDropdownRef", { static: false }) btnDropdownRef: ElementRef;
   @ViewChild("popoverDropdownRef", { static: false })
   popoverDropdownRef: ElementRef;
+  private : boolean
   ngOnInit() {}
   toggleDropdown(event) {
+    if (localStorage.getItem('session_id') != null) {
+      this.private = true
+    }else{
+      this.private = false
+    }
     event.preventDefault();
     if (this.dropdownPopoverShow) {
       this.dropdownPopoverShow = false;

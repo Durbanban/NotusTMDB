@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { Films } from "src/app/interfaces/films.interface";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { RatedFilm } from "src/app/interfaces/ratedFilmsList.interface";
 import { AuthService } from "src/app/services/auth.service";
 import { FilmsService } from "src/app/services/films.service";
@@ -12,19 +12,23 @@ import Swal from "sweetalert2";
 })
 export class RatedFilmsListComponent implements OnInit {
   listadoRatedFilms: RatedFilm[] = [];
-  sessionID: string | null;
-  mostrarBool = false;
+  sessionID = localStorage.getItem("session_id");
+  vacioBool : boolean;
 
-  constructor(private filmsService: FilmsService, private auth: AuthService) {}
+  constructor(private filmsService: FilmsService, private auth: AuthService, private router : Router) {}
 
   ngOnInit(): void {
-    this.sessionID = localStorage.getItem("session_id");
 
     if (this.sessionID != null) {
-      this.mostrarBool = true;
       this.auth.getUserDetails(this.sessionID).subscribe((a) => {
         this.filmsService.getRatedFilms(a.id, this.sessionID).subscribe(b => {
           this.listadoRatedFilms = b.results
+
+          if (this.listadoRatedFilms.length > 0) {
+            this.vacioBool = false
+          }else{
+            this.vacioBool = true
+          }
         })
       });
     }

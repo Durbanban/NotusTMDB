@@ -11,6 +11,7 @@
     <br />
     <br />
     <div class="flex flex-wrap">
+      <h1 *ngIf="vacioBool">Actualmente no tienes ninguna película valorada</h1>
       <div class="card" *ngFor="let film of listadoRatedFilms">
         <img [src]="getFilmImg(film)" alt="" />
         <a class="titulo" [routerLink]="'/films/'+film.id">
