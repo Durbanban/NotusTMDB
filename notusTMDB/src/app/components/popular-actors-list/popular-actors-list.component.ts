@@ -18,6 +18,7 @@ export class PopularActorsListComponent implements OnInit {
   private _color = "light";
 
   actorList: Actor[] = [];
+  allActorsList: Actor[] = [];
   page = 1;
   totalPages = 0;
   buscarBool = false;
@@ -26,6 +27,7 @@ export class PopularActorsListComponent implements OnInit {
   constructor(private actorService: ActorService ) { }
 
   ngOnInit(): void {
+    this.allActorsList = this.actorService.getAllActors();
     this.getPopular(this.page);
   }
 

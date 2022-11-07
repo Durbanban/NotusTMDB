@@ -75,7 +75,7 @@
     <div
       style="width: 100%; text-align: center"
       class="contBusc"
-      *ngFor="let actor of actorList"
+      *ngFor="let actor of allActorsList"
     >
       <a
         *ngIf="
@@ -149,7 +149,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            Valoraciones&nbsp;&nbsp;&nbsp;
+            Cine adulto&nbsp;&nbsp;&nbsp;
           </th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -178,21 +178,65 @@
               {{ actor.name }}
             </span>
           </th>
-          <td
+          <td *ngIf="actor.known_for_department == 'Acting'"
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
-            {{ actor.known_for_department }}
+            Actor/Actriz
           </td>
-          <td
+          <td *ngIf="actor.known_for_department == 'Directing'"
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            Director/a
+          </td>
+          <td *ngIf="actor.known_for_department != 'Directing' && actor.known_for_department != 'Acting'"
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            Guionista
+          </td>
+          <td *ngIf="actor.gender == 2"
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
             style="text-align: center"
           >
-            {{ actor.gender }}
+            Hombre
+          </td>
+          <td *ngIf="actor.gender == 1"
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            style="text-align: center"
+          >
+            Mujer
+          </td>
+          <td *ngIf="actor.gender == 3"
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          style="text-align: center"
+          >
+            Mujer trans
+          </td>
+          <td *ngIf="actor.gender == 0"
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          style="text-align: center"
+          >
+            No binario
+          </td>
+          <td *ngIf="actor.gender > 3"
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          style="text-align: center"
+          >
+            Helicóptero apache
           </td>
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
             {{ actor.popularity }}
+          </td>
+          <td *ngIf="actor.adult == false"
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+          No
+          </td>
+          <td *ngIf="actor.adult == true"
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            Sí
           </td>
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"

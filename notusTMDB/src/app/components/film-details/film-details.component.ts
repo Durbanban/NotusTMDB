@@ -33,7 +33,6 @@ export class FilmDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = Number((this.router.url.split('/')[2]).split('?')[0])
-
     this.filmsService.getFilmById(this.id).subscribe((a) => {
       this.film = a
       this.duracion = Number((this.film.runtime/60).toFixed(2))
@@ -82,7 +81,7 @@ export class FilmDetailsComponent implements OnInit {
   }
 
   filmfav() {
-    if (this.sessionID != null) {
+    if (localStorage.getItem('session_id') != null) {
       if (this.rateValue >= 1) {
         this.favIconBool = true
       }else{
@@ -95,7 +94,7 @@ export class FilmDetailsComponent implements OnInit {
 
   enviar() {
     this.rateDto.value = this.rateValue
-    this.filmsService.rateFilm(this.rateDto, this.id, this.sessionID).subscribe(a => {
+    this.filmsService.rateFilm(this.rateDto, this.id, localStorage.getItem('session_id')).subscribe(a => {
       if (a.success) {
         this.isVal = true
         Swal.fire({
