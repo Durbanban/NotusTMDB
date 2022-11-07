@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SeriesDetailsResponse } from '../interfaces/series-details.interfaces';
 import { Series, SeriesResponse } from '../interfaces/series.interaces';
+//import { RatedSeriesResponse } from '../interfaces/seriesRated.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,7 @@ export class SeriesService {
     return this.http.get<SeriesDetailsResponse>(`${environment.API_BASE_URL}/tv/${id}?api_key=${environment.API_KEY}`)
 
   }
+
+  //getRatedSeries(id: number, session_id: string): Observable<RatedSeriesResponse>
   
 }
