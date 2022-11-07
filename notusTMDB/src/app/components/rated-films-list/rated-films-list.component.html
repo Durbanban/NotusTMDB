@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <app-portada></app-portada>
+    <br />
+    <br />
+    <div class="flex flex-wrap">
+      <h1 *ngIf="vacioBool">Actualmente no tienes ninguna película valorada</h1>
+      <div class="card" *ngFor="let film of listadoRatedFilms">
+        <img [src]="getFilmImg(film)" alt="" />
+        <a class="titulo" [routerLink]="'/films/'+film.id">
+            <p class="tituloP">{{ film.title }}</p>
+            <p class="tituloPunt">Tu puntuación: {{ film.rating }}</p>
+        </a>
+        <div class="botones">
+          <button mat-raised-button style="outline: none; width: 50%">
+            <mat-icon>favorite_border</mat-icon>
+          </button>
+          <button
+            mat-raised-button
+            style="outline: none; width: 50%"
+            (click)="eliminarRate(film.id)"
+          >
+            <mat-icon>remove_circle_outline</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
