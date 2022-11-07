@@ -103,7 +103,9 @@ export class PortadaComponent implements OnInit {
           this.sessionActive = false;
           if (this.router.url.endsWith('true')) {
               window.location.href=`http://localhost:4200${this.router.url.split('?')[0]}`;
-          } else {
+          }else if(this.router.url.includes('rated-films')){
+            window.location.href=`http://localhost:4200/films`
+          }else {
               window.location.href=`http://localhost:4200${this.router.url}`;
           }
         }

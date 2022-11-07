@@ -25,6 +25,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { RatedFilmsListComponent } from "./components/rated-films-list/rated-films-list.component";
 import { PopularActorsListComponent } from "./components/popular-actors-list/popular-actors-list.component";
 import { ActorDetailsComponent } from "./components/actor-details/actor-details.component";
 
@@ -55,6 +56,7 @@ const routes: Routes = [
   // no layout views
   { path: "profile", component: ProfileComponent },
   { path: "films", component: FilmListComponent},
+  { path: "rated-films", component: RatedFilmsListComponent},
   { path: "series", component: SeriesListComponent},
   { path: "films/:id", component: FilmDetailsComponent},
   { path: "landing", component: LandingComponent },
