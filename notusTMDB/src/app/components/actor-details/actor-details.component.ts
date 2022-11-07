@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ActorDetailsResponse } from 'src/app/interfaces/actor-details.interface';
 import { Filmography } from 'src/app/interfaces/combined-credits.interface';
 import { ActorDetailsService } from 'src/app/services/actor-details.service';
-import { ActorService } from 'src/app/services/actor.service';
+import { CreditsService } from 'src/app/services/credits.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -18,6 +18,7 @@ export class ActorDetailsComponent implements OnInit {
   today = Date.now();
 
   constructor(private actorDetailsService: ActorDetailsService,
+    private creditsService: CreditsService,
     private ruta: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -25,15 +26,25 @@ export class ActorDetailsComponent implements OnInit {
   }
   
   cargarActor() {
+    debugger;
     const actorID = Number(this.ruta.snapshot.paramMap.get('id'));
-    this.actorDetailsService.getById(actorID).subscribe(respuesta => {
-      this.detallesActor = respuesta;
+    this.actorDetailsService.getById(actorID).subscribe(actor => {
+      this.detallesActor = actor;
     });
-    this.actorFilmography = this.actorDetailsService.getActorFilmography(this.detallesActor);
+    this.creditsService.getActorFilmography(actorID).subscribe(respuesta => {
+      respuesta.cast.forEach(peli => {
+        this.actorFilmography.push(peli);
+      });
+    });
+    
   }
 
   getActorImg(actor: ActorDetailsResponse) {
     return `${environment.apiImgUrl}/${actor.profile_path}`
+  }
+
+  getFilmImg(peli: Filmography) {
+    return `https://image.tmdb.org/t/p/w500${peli.poster_path}`
   }
 
 }
