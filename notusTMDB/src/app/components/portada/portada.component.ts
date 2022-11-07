@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateSessionDto } from 'src/app/dto/create-session.dto';
 import { DeleteSessionDto } from 'src/app/dto/delete-session.dto';
+import { FilmDetailsResponse } from 'src/app/interfaces/filmDetails.interface';
 import { AuthService } from 'src/app/services/auth.service';
+import { FilmsService } from 'src/app/services/films.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-portada',
@@ -19,6 +22,7 @@ export class PortadaComponent implements OnInit {
   userName!: string;
   avatarPath!: string;
   sessionActive = false;
+  filmId : string
 
   constructor(private authService: AuthService,
     private ruta: ActivatedRoute,
@@ -79,19 +83,32 @@ export class PortadaComponent implements OnInit {
   }
 
   deleteSession(sessionID: string | null) {
-    if(sessionID != null) {
-      let sessionDelete = new DeleteSessionDto();
-      sessionDelete.session_id = sessionID;
-      this.authService.deleteSession(sessionDelete);
-      localStorage.removeItem('session_id');
-      this.sessionID = null;
-      this.sessionActive = false;
-      if(this.router.url.endsWith('true')) {
-        window.location.href=`http://localhost:4200${this.router.url.split('?')[0]}`;
-      }else {
-        window.location.href=`http://localhost:4200${this.router.url}`;
+    Swal.fire({
+      title: '¿Estás seguro que quieres cerrar sesión?',
+      text: "Podrás volver a iniciar sesión cuando quieras",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, cerrar sesión',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if(sessionID != null) {
+          let sessionDelete = new DeleteSessionDto();
+          sessionDelete.session_id = sessionID;
+          this.authService.deleteSession(sessionDelete);
+          localStorage.removeItem('session_id');
+          this.sessionID = null;
+          this.sessionActive = false;
+          if (this.router.url.endsWith('true')) {
+              window.location.href=`http://localhost:4200${this.router.url.split('?')[0]}`;
+          } else {
+              window.location.href=`http://localhost:4200${this.router.url}`;
+          }
+        }
       }
-    }
+    })
   }
 
 }
