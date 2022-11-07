@@ -58,6 +58,8 @@ import { FilmDetailsComponent } from './components/film-details/film-details.com
 import { FormsModule } from "@angular/forms";
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
 import { RatedFilmsListComponent } from './components/rated-films-list/rated-films-list.component';
+import { PopularActorsListComponent } from './components/popular-actors-list/popular-actors-list.component';
+import { ActorDetailsComponent } from './components/actor-details/actor-details.component';
 
 @NgModule({
   declarations: [
@@ -100,8 +102,10 @@ import { RatedFilmsListComponent } from './components/rated-films-list/rated-fil
     FilmListComponent,
     EditTableComponent,
     FilmDetailsComponent,
+    PopularActorsListComponent,
     SeriesListComponent,
     RatedFilmsListComponent,
+    ActorDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,  MaterialImportsModule],
   providers: [],

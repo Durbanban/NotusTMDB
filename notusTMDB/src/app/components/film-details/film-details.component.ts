@@ -33,7 +33,6 @@ export class FilmDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = Number((this.router.url.split('/')[2]).split('?')[0])
-
     this.filmsService.getFilmById(this.id).subscribe((a) => {
       this.film = a
       this.duracion = Number((this.film.runtime/60).toFixed(2))
