@@ -24,13 +24,13 @@
   </a>
   <a
     [routerLink]="['/admin/settings']"
-    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700" *ngIf="private"
   >
     Mis películas favoritas
   </a>
   <a
-    [routerLink]="['/admin/tables']"
-    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+    [routerLink]="['/rated-films']"
+    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700" *ngIf="private"
   >
     Mis películas valoradas
   </a>
@@ -48,7 +48,7 @@
   </a>
   <a
     [routerLink]="['/auth/register']"
-    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700" *ngIf="private"
   >
     Mis series valoradas
   </a>
@@ -63,11 +63,5 @@
     class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
   >
     Populares
-  </a>
-  <a
-    [routerLink]="['/profile']"
-    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-  >
-    Mis actores favoritos (si hay tiempo)
   </a>
 </div>
