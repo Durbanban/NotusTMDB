@@ -47,6 +47,7 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { SeriesListComponent } from "./components/series-list/series-list.component";
 import { LoginAppComponent } from './components/login-app/login-app.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PortadaComponent } from './components/portada/portada.component';
@@ -101,9 +102,10 @@ import { MaterialImportsModule } from "./material-imports/material-imports.modul
     FilmListComponent,
     EditTableComponent,
     FilmDetailsComponent,
+    SeriesListComponent,
     SidebarNewComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,  MaterialImportsModule,],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,  MaterialImportsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
