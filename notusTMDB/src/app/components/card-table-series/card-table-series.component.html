@@ -7,14 +7,9 @@
       <div class="content">
         <mat-card class="mat-elevation-z4">
           <mat-card-header>
-            <mat-card-title>Himalayan Peaks</mat-card-title>
+            <mat-card-title>{{series.name}}</mat-card-title>
           </mat-card-header>
-          <img mat-card-image src="./../assets/images/mountains.jpg">
-          <mat-card-content>
-            <p>
-              The Himalayas is a mountain range in Asia.
-            </p>
-          </mat-card-content>
+          <img mat-card-image [src]="getImgSeries(series)">
           <mat-card-actions>
             <button mat-button>LIKE</button>
             <button mat-button>SHARE</button>

@@ -45,7 +45,6 @@ import { IndexDropdownComponent } from "./components/dropdowns/index-dropdown/in
 import { TableDropdownComponent } from "./components/dropdowns/table-dropdown/table-dropdown.component";
 import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pages-dropdown.component";
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
-import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { SeriesListComponent } from "./components/series-list/series-list.component";
 import { LoginAppComponent } from './components/login-app/login-app.component';
@@ -56,10 +55,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { EditTableComponent } from './components/edit-table/edit-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
-import { SidebarNewComponent } from "./components/sidebar-edit/sidebar.component";
-import { FormsModule } from "@angular/forms";
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
-import { CardTableSeriesComponent } from './components/card-table-series/card-table-series.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
@@ -73,7 +69,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     TableDropdownComponent,
     NotificationDropdownComponent,
     UserDropdownComponent,
-    SidebarComponent,
     FooterComponent,
     FooterSmallComponent,
     FooterAdminComponent,
@@ -105,8 +100,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     EditTableComponent,
     FilmDetailsComponent,
     SeriesListComponent,
-    SidebarNewComponent,
-    CardTableSeriesComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule, FlexLayoutModule],
   providers: [],
