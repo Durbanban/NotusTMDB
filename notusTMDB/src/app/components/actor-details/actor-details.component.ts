@@ -12,16 +12,20 @@ import { ActorService } from 'src/app/services/actor.service';
 export class ActorDetailsComponent implements OnInit {
 
   detallesActor: ActorDetailsResponse = {} as ActorDetailsResponse;
+  today = Date.now();
 
   constructor(private actorDetailsService: ActorDetailsService,
     private ruta: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.cargarActor();
   }
   
   cargarActor() {
     const actorID = Number(this.ruta.snapshot.paramMap.get('id'));
-    this.actorDetailsService.getById(actorID);
+    this.actorDetailsService.getById(actorID).subscribe(respuesta => {
+      this.detallesActor = respuesta;
+    })
     
 
   }
