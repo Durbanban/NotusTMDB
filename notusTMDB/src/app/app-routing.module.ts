@@ -22,12 +22,11 @@ import { LoginComponent } from "./views/auth/login/login.component";
 import { RegisterComponent } from "./views/auth/register/register.component";
 
 // no layouts views
-import { IndexComponent } from "./views/index/index.component";
-import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
 import { RatedFilmsListComponent } from "./components/rated-films-list/rated-films-list.component";
 import { PopularActorsListComponent } from "./components/popular-actors-list/popular-actors-list.component";
 import { ActorDetailsComponent } from "./components/actor-details/actor-details.component";
+import { LandingComponent } from "./components/landing/landing.component";
 
 
 const routes: Routes = [
@@ -59,12 +58,11 @@ const routes: Routes = [
   { path: "rated-films", component: RatedFilmsListComponent},
   { path: "series", component: SeriesListComponent},
   { path: "films/:id", component: FilmDetailsComponent},
-  { path: "landing", component: LandingComponent },
   { path: "loginApp", component: LoginAppComponent },
   { path: "portada", component: PortadaComponent },
   { path: "actors", component: PopularActorsListComponent },
   { path: "actors/:id", component: ActorDetailsComponent },
-  { path: "", component: PortadaComponent, pathMatch: 'full'},
+  { path: "", component: LandingComponent, pathMatch: 'full'},
   { path: "**", component: NotFoundComponent}
 ];
 
@@ -73,3 +71,20 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+
+/*
+
+requistos:
+logueado en fb, tener creado el proyecto de fb
+
+-----------------
+
+1. ng add @angular/fire (hosting)
+
+2. firebase init (hosting)
+
+3. ng build (firebase.json, asegurarte que public: dist/... coincide con el nombre de la carpeta)
+
+4. firebase deploy
+
+*/
