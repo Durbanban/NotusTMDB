@@ -5,4 +5,12 @@
 
 .content > mat-card {
     width: 200px;
+    height: 300px;
+    
+}
+.eo{
+    width: 100px;
+}
+.eo card {
+    max-width: 100%;
 }

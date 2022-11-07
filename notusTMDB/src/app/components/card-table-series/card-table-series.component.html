@@ -1,25 +1,27 @@
 
-<div *ngFor="let series of seriesList">
+<app-portada></app-portada>
+
+<div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+
+
+  <div *ngFor="let series of seriesList">
  
   <div class="content">
    
     <mat-card class="mat-elevation-z4">
-     
-        <mat-card-header>
-       
-        <mat-card-title>{{series.name}}</mat-card-title>
-      
-    </mat-card-header>
-      
-      <img mat-card-image [src]="getImgSeries(series)">
+
+      <mat-card-content>
+
+        <img class="card-img-top" mat-card-image [src]="getImgSeries(series)">
+
+      </mat-card-content>
       
       <mat-card-actions>
        
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-     
+        <button mat-button routerLink="/detallesSeries">+ Detalles</button>
+
     </mat-card-actions>
     </mat-card>
   </div>
-
+</div>
 </div>

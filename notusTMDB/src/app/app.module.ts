@@ -56,7 +56,6 @@ import { EditTableComponent } from './components/edit-table/edit-table.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
-import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CardTableSeriesComponent } from "./components/card-table-series/card-table-series.component";
 
@@ -103,6 +102,7 @@ import { CardTableSeriesComponent } from "./components/card-table-series/card-ta
     FilmDetailsComponent,
     SeriesListComponent,
     CardTableSeriesComponent
+
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule,FormsModule,ReactiveFormsModule],
   providers: [],

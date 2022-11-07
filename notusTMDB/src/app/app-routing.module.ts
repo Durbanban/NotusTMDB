@@ -55,6 +55,7 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "films", component: FilmListComponent},
   { path: "series", component: CardTableSeriesComponent},
+  {path: "detallesSeries", component: SeriesListComponent},
   { path: "films/:id", component: FilmDetailsComponent},
   { path: "landing", component: LandingComponent },
   { path: "loginApp", component: LoginAppComponent },
