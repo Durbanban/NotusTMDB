@@ -25,6 +25,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { CardTableSeriesComponent } from "./components/card-table-series/card-table-series.component";
 
 
 const routes: Routes = [
@@ -53,7 +54,7 @@ const routes: Routes = [
   // no layout views
   { path: "profile", component: ProfileComponent },
   { path: "films", component: FilmListComponent},
-  { path: "series", component: SeriesListComponent},
+  { path: "series", component: CardTableSeriesComponent},
   { path: "films/:id", component: FilmDetailsComponent},
   { path: "landing", component: LandingComponent },
   { path: "loginApp", component: LoginAppComponent },
