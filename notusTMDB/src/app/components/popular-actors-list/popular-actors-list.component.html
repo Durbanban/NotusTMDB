@@ -1,0 +1,252 @@
+<app-portada></app-portada>
+<div class="separador"></div>
+<div
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded mt-6"
+  [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
+>
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center">
+      <div
+        class="relative w-full px-4 max-w-full flex-grow flex"
+        style="width: 100%; justify-content: space-between"
+      >
+        <h3
+          class="font-semibold text-lg"
+          [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
+          style="padding-top: 10px"
+        >
+          Actores populares
+        </h3>
+        <div style="display: flex; width: 250px; justify-content: space-around">
+          <input
+            type="search"
+            [(ngModel)]="buscarStr"
+            [class]="!buscarBool ? 'inpSearch' : 'inpSearchOpen'"
+          />
+          <button
+            mat-raised-button
+            (click)="buscar()"
+            style="margin-left: 10px"
+          >
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+        <div>
+          <mat-button-toggle-group
+            class="pagination"
+            name="paginacionActores"
+            aria-label="Paginación de actores"
+          >
+            <mat-button-toggle (click)="getPopular(1)" [disabled]="page == 1"
+              >&#60;&#60;</mat-button-toggle
+            >
+            <mat-button-toggle
+              (click)="getPopular(page - 1)"
+              [disabled]="page == 1"
+              >&#60;</mat-button-toggle
+            >
+            <ng-container *ngFor="let pagina of numPages(); let i = index">
+              <mat-button-toggle
+                *ngIf="i <= page && i >= page - 2"
+                [checked]="page == i + 1"
+                (click)="getPopular(i + 1)"
+                >{{ i + 1 }}</mat-button-toggle
+              >
+            </ng-container>
+            <mat-button-toggle
+              (click)="getPopular(page + 1)"
+              [disabled]="page == totalPages"
+              >&#62;
+            </mat-button-toggle>
+            <mat-button-toggle
+              (click)="getPopular(totalPages)"
+              [disabled]="page == totalPages"
+              >&#62;&#62;
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style="width: 100%; max-height: 300px; overflow-y: scroll"
+    *ngIf="buscarBool"
+  >
+    <div
+      style="width: 100%; text-align: center"
+      class="contBusc"
+      *ngFor="let actor of allActorsList"
+    >
+      <a
+        *ngIf="
+          actor.name.toLowerCase().includes(buscarStr.toLowerCase()) &&
+          buscarStr.length > 0
+        "
+        [routerLink]="actor.id"
+      >
+        <br />
+        {{ actor.name }}
+        <br />
+        <br />
+        <hr />
+      </a>
+    </div>
+  </div>
+  <div class="block w-full overflow-x-auto">
+    <mat-progress-bar
+      mode="query"
+      *ngIf="actorList.length <= 0"
+    ></mat-progress-bar>
+    <!-- Projects table -->
+    <table class="items-center w-full bg-transparent border-collapse">
+      <thead>
+        <tr>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Nombre
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Departamento
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Género
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Popularidad
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Cine adulto&nbsp;&nbsp;&nbsp;
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          ></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let actor of actorList">
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+            <img
+              [src]="getActorImg(actor)"
+              class="h-12 w-12 bg-white rounded-full border"
+              alt="..."
+            />
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
+            >
+              {{ actor.name }}
+            </span>
+          </th>
+          <td *ngIf="actor.known_for_department == 'Acting'"
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            Actor/Actriz
+          </td>
+          <td *ngIf="actor.known_for_department == 'Directing'"
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            Director/a
+          </td>
+          <td *ngIf="actor.known_for_department != 'Directing' && actor.known_for_department != 'Acting'"
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            Guionista
+          </td>
+          <td *ngIf="actor.gender == 2"
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            style="text-align: center"
+          >
+            Hombre
+          </td>
+          <td *ngIf="actor.gender == 1"
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            style="text-align: center"
+          >
+            Mujer
+          </td>
+          <td *ngIf="actor.gender == 3"
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          style="text-align: center"
+          >
+            Mujer trans
+          </td>
+          <td *ngIf="actor.gender == 0"
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          style="text-align: center"
+          >
+            No binario
+          </td>
+          <td *ngIf="actor.gender > 3"
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          style="text-align: center"
+          >
+            Helicóptero apache
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            {{ actor.popularity }}
+          </td>
+          <td *ngIf="actor.adult == false"
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+          No
+          </td>
+          <td *ngIf="actor.adult == true"
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            Sí
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
+          >
+            <a class="flipButton" [routerLink]="actor.id"
+              >Ver detalles&nbsp;<span class="arrowFlip">&#10132;</span></a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

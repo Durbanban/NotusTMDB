@@ -24,7 +24,9 @@ export class PortadaComponent implements OnInit {
   sessionActive = false;
   filmId : string
 
-  constructor(private authService: AuthService, private ruta: ActivatedRoute, private router : Router, private filmsService : FilmsService) { }
+  constructor(private authService: AuthService,
+    private ruta: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.sessionID = localStorage.getItem('session_id');
