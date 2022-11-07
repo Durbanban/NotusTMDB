@@ -10,7 +10,7 @@
     <app-portada></app-portada>
     <br />
     <br />
-    <div class="container">
+    <div class="flex flex-wrap">
       <div class="card" *ngFor="let film of listadoRatedFilms">
         <img [src]="getFilmImg(film)" alt="" />
         <a class="titulo" [routerLink]="'/films/'+film.id">
