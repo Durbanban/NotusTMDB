@@ -29,7 +29,7 @@ export class FilmDetailsComponent implements OnInit {
   delButtonRate = false;
   duracion: number;
   filmArray: Film[] = [];
-  favoriteDto : CreateFavDto = {} as CreateFavDto;
+  favoriteDto: CreateFavDto = {} as CreateFavDto;
 
   constructor(
     private router: Router,
@@ -75,9 +75,14 @@ export class FilmDetailsComponent implements OnInit {
               }
             });
 
-            this.filmsService.getFavoriteFilms(localStorage.getItem("session_id"),localStorage.getItem("account_id")).subscribe((a) => {
-              this.filmArray = a.results;
-            });
+            this.filmsService
+              .getFavoriteFilms(
+                localStorage.getItem("session_id"),
+                localStorage.getItem("account_id")
+              )
+              .subscribe((a) => {
+                this.filmArray = a.results;
+              });
           });
       });
     }
@@ -155,27 +160,31 @@ export class FilmDetailsComponent implements OnInit {
     }
   }
 
-  markFav(id : number){
-    this.filmArray.forEach(element => {
-      if (element.id == id) {
-        this.favoriteDto.favorite = false
-      }else if(element.id != id){
-        this.favoriteDto.favorite = true
-      }
-    });
+  markFav() {
+    if (this.filmArray.map((ratedFilm) => ratedFilm.id).includes(this.id)) {
+      this.favoriteDto.favorite = false;
+    } else {
+      this.favoriteDto.favorite = true;
+    }
 
-    this.favoriteDto.media_id = id
-    this.favoriteDto.media_type = 'movie'
-    this.filmsService.markFavFilm(Number(localStorage.getItem('account_id')), this.sessionID, this.favoriteDto).subscribe(a => {
-      Swal.fire({
-        position: 'top',
-        icon: 'success',
-        title: 'Tu lista de favoritas se ha actualizado',
-        showConfirmButton: false,
-        timer: 1500
-      }).then(a => {
-        location.reload()
+    this.favoriteDto.media_id = this.id;
+    this.favoriteDto.media_type = "movie";
+    this.filmsService
+      .markFavFilm(
+        Number(localStorage.getItem("account_id")),
+        this.sessionID,
+        this.favoriteDto
+      )
+      .subscribe((a) => {
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Tu lista de favoritas se ha actualizado",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then((a) => {
+          location.reload();
+        });
       });
-    });
   }
 }
