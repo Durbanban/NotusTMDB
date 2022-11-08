@@ -1,19 +1,21 @@
-body,html{
-    width: 100%;
-    height: max-content;
-    min-height: 100vh;
+
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    width: 200px;
+    height: 300px;
+    
+}
+.eo{
+    width: 100px;
+}
+.eo card {
+    max-width: 100%;
 }
 
 body{
+    
     background: brown;
-}
-
-.container{
-    width: 85%;
-    margin: 0 auto;
-}
-
-.super{
-    width: 85%;
-    margin-left: 15%;
 }
