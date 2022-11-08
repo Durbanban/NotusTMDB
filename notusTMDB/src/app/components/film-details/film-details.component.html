@@ -54,7 +54,7 @@
                   <span class="text-sm text-blueGray-400">Duración</span>
                 </div>
                 <div class="mr-4 p-3 text-center">
-                  <button mat-raised-button (click)="markFav(film.id)" style="outline: none; height: min-content;">
+                  <button mat-raised-button (click)="markFav()" style="outline: none; height: min-content;">
                   <mat-icon *ngIf="!comprobarFav(film.id)">favorite_border</mat-icon>
                   <mat-icon *ngIf="comprobarFav(film.id)">favorite</mat-icon>
                 </button>
