@@ -10,7 +10,7 @@ import { Videos } from "src/app/interfaces/videos.interface";
 import { AuthService } from "src/app/services/auth.service";
 import { FilmsService } from "src/app/services/films.service";
 import { VideoService } from "src/app/services/video.service";
-import { environment } from "src/environments/environment";
+import { environment } from "src/environments/environment.prod";
 import Swal from "sweetalert2";
 
 @Component({

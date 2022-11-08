@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateSessionDto } from 'src/app/dto/create-session.dto';
 import { DeleteSessionDto } from 'src/app/dto/delete-session.dto';
-import { FilmDetailsResponse } from 'src/app/interfaces/filmDetails.interface';
 import { AuthService } from 'src/app/services/auth.service';
-import { FilmsService } from 'src/app/services/films.service';
 import { environment } from 'src/environments/environment.prod';
 import Swal from 'sweetalert2';
 

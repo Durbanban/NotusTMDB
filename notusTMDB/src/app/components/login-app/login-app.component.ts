@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-login-app',
@@ -21,7 +22,7 @@ export class LoginAppComponent implements OnInit {
     this.authService.createRequestToken().subscribe(respuesta => {
       if(respuesta.success) {
         this.authToken = respuesta.request_token;
-        window.location.href=`https://www.themoviedb.org/authenticate/${this.authToken}?redirect_to=http://localhost:4200/portada`
+        window.location.href=`https://www.themoviedb.org/authenticate/${this.authToken}?redirect_to=${environment.appUrl}/portada`
       }
     });
   }
