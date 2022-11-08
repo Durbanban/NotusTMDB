@@ -30,7 +30,7 @@ import { RatedFilmsListComponent } from "./components/rated-films-list/rated-fil
 import { PopularActorsListComponent } from "./components/popular-actors-list/popular-actors-list.component";
 import { ActorDetailsComponent } from "./components/actor-details/actor-details.component";
 import { FavFilmsListComponent } from "./components/fav-films-list/fav-films-list.component";
-
+import { RateSeriesComponent } from "./components/rate-series/rate-series.component";
 
 const routes: Routes = [
   // admin views
@@ -57,19 +57,20 @@ const routes: Routes = [
   },
   // no layout views
   { path: "profile", component: ProfileComponent },
-  { path: "films", component: FilmListComponent},
-  { path: "rated-films", component: RatedFilmsListComponent},
-  { path: "series", component: SeriesListComponent},
-  { path: "detalles/:id", component: CardTableSeriesComponent},
-  { path: "films/:id", component: FilmDetailsComponent},
+  { path: "valoradas", component: RateSeriesComponent },
+  { path: "films", component: FilmListComponent },
+  { path: "rated-films", component: RatedFilmsListComponent },
+  { path: "series", component: SeriesListComponent },
+  { path: "detalles/:id", component: CardTableSeriesComponent },
+  { path: "films/:id", component: FilmDetailsComponent },
   { path: "landing", component: LandingComponent },
   { path: "loginApp", component: LoginAppComponent },
   { path: "portada", component: PortadaComponent },
   { path: "actors", component: PopularActorsListComponent },
   { path: "actors/:id", component: ActorDetailsComponent },
   { path: "favorite-films", component: FavFilmsListComponent },
-  { path: "", component: PortadaComponent, pathMatch: 'full'},
-  { path: "**", component: NotFoundComponent}
+  { path: "", component: PortadaComponent, pathMatch: "full" },
+  { path: "**", component: NotFoundComponent },
 ];
 
 @NgModule({

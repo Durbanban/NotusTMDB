@@ -62,6 +62,7 @@ import { RatedFilmsListComponent } from './components/rated-films-list/rated-fil
 import { PopularActorsListComponent } from './components/popular-actors-list/popular-actors-list.component';
 import { ActorDetailsComponent } from './components/actor-details/actor-details.component';
 import { FavFilmsListComponent } from './components/fav-films-list/fav-films-list.component';
+import { RateSeriesComponent } from './components/rate-series/rate-series.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +111,7 @@ import { FavFilmsListComponent } from './components/fav-films-list/fav-films-lis
     RatedFilmsListComponent,
     ActorDetailsComponent,
     FavFilmsListComponent,
+    RateSeriesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule,FormsModule,ReactiveFormsModule],
   providers: [],

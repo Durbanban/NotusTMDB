@@ -57,7 +57,7 @@ export class ActorDetailsComponent implements OnInit {
     if(peli.media_type == 'movie') {
       return 'films'
     }else if(peli.media_type == 'tv') {
-      return 'series'
+      return 'detalles'
     }
   }
 

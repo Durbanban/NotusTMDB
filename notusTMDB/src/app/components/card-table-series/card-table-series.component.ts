@@ -24,11 +24,13 @@ export class CardTableSeriesComponent implements OnInit {
   rate: CreateRateDto = {} as CreateRateDto;
   ValorR: number;
   id: string;
+  stars: number[] = [1, 2, 3, 4, 5];
   valido = false;
   videosList: VideosSeries[] = [];
   seasons: number;
+  sessionID: string;
   series: Series;
-
+  selectedValue: number;
   constructor(
     private seriesService: SeriesService,
     private router: Router,
@@ -38,15 +40,19 @@ export class CardTableSeriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.router.url.split("/")[2].split("?")[0];
+    this.sessionID = localStorage.getItem("session_id");
+    this.getVideosBuenos();
     this.getDetails();
+    this.getListadoSeries();
     this.seriesService.getSeriesDetails2(this.id).subscribe((resp) => {
-
       this.series = resp;
     });
-
-    this.getListadoSeries();
   }
-
+  getVideosBuenos() {
+    this.seriesService.getVideos(this.id).subscribe((resp) => {
+      this.videosList = resp.results;
+    });
+  }
   getListadoSeries() {
     this.seriesService.getSeries().subscribe((resp) => {
       this.seriesList = resp.results;
@@ -62,8 +68,7 @@ export class CardTableSeriesComponent implements OnInit {
   }
 
   getVideoTrailer(video: VideosSeries) {
-
-    let url = `https://www.youtube.com/embed/${video.key}`
+    let url = `https://www.youtube.com/embed/${video.key}`;
 
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
@@ -72,38 +77,16 @@ export class CardTableSeriesComponent implements OnInit {
     return seasons.seasons;
   }
 
-  getDetails(){
-
+  getDetails() {
     this.seriesService.getSeriesDetails(this.id).subscribe((resp) => {
-
       this.seriesList = resp.results;
-    })
+    });
   }
-
-  /*
-go(){
-  this.rate.value = this.ValorR
-  
-  this.seriesService.getRateSeries2(this.rate, this.id, localStorage.getItem('session_id')).subscribe(rep => {
-
-    if(rep.success){
-
-      this.valido = true
-
-      Swal.fire({
-        position: 'top',
-        icon: 'success',
-        title: 'Tu valoración se ha enviado correctamente',
-        showConfirmButton: false,
-        timer: 1500
-      
-      }).then( resp => {
-       
-        location.reload()
-      })
-    }
-
-  });
-}
-*/
+  countStar(star: number) {
+    this.rate.value = star;
+    this.selectedValue = star;
+    this.seriesService
+      .getRatedSeries(this.id, this.rate)
+      .subscribe((resp) => {});
+  }
 }
