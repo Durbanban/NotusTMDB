@@ -57,8 +57,8 @@ export class FilmDetailsComponent implements OnInit {
               this.favIconBool = true
               this.rateValue = element.rating
               this.delButtonRate = true
-            }else {
-              this.rateValue = 1
+            }else{
+              this.rateValue = undefined
             }
           });
         })
