@@ -62,6 +62,7 @@ import { ActorDetailsComponent } from './components/actor-details/actor-details.
 import { PortadaComponent } from "./components/portada/portada.component";
 import { LandingComponent } from './components/landing/landing.component';
 import { FavFilmsListComponent } from './components/fav-films-list/fav-films-list.component';
+import { RateSeriesComponent } from './components/rate-series/rate-series.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +111,7 @@ import { FavFilmsListComponent } from './components/fav-films-list/fav-films-lis
     ActorDetailsComponent,
     LandingComponent,
     FavFilmsListComponent,
+    RateSeriesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule,FormsModule,ReactiveFormsModule],
   providers: [],

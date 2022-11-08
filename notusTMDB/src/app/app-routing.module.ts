@@ -29,6 +29,7 @@ import { PopularActorsListComponent } from "./components/popular-actors-list/pop
 import { ActorDetailsComponent } from "./components/actor-details/actor-details.component";
 import { LandingComponent } from "./components/landing/landing.component";
 import { FavFilmsListComponent } from "./components/fav-films-list/fav-films-list.component";
+import { RateSeriesComponent } from "./components/rate-series/rate-series.component";
 
 
 const routes: Routes = [
@@ -56,11 +57,13 @@ const routes: Routes = [
   },
   // no layout views
   { path: "profile", component: ProfileComponent },
-  { path: "films", component: FilmListComponent},
-  { path: "rated-films", component: RatedFilmsListComponent},
-  { path: "series", component: SeriesListComponent},
-  { path: "detalles/:id", component: CardTableSeriesComponent},
-  { path: "films/:id", component: FilmDetailsComponent},
+  { path: "valoradas", component: RateSeriesComponent },
+  { path: "films", component: FilmListComponent },
+  { path: "rated-films", component: RatedFilmsListComponent },
+  { path: "series", component: SeriesListComponent },
+  { path: "detalles/:id", component: CardTableSeriesComponent },
+  { path: "films/:id", component: FilmDetailsComponent },
+  { path: "landing", component: LandingComponent },
   { path: "loginApp", component: LoginAppComponent },
   { path: "portada", component: PortadaComponent },
   { path: "actors", component: PopularActorsListComponent },
