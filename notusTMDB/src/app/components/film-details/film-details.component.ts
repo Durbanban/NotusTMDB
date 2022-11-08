@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Router } from "@angular/router";
+import { interval } from "rxjs";
 import { CreateFavDto } from "src/app/dto/create-fav-dto";
 import { CreateRateDto } from "src/app/dto/create-rate.dto";
 import { FilmDetailsResponse } from "src/app/interfaces/filmDetails.interface";
@@ -9,6 +10,7 @@ import { Videos } from "src/app/interfaces/videos.interface";
 import { AuthService } from "src/app/services/auth.service";
 import { FilmsService } from "src/app/services/films.service";
 import { VideoService } from "src/app/services/video.service";
+import { environment } from "src/environments/environment";
 import Swal from "sweetalert2";
 
 @Component({
@@ -30,6 +32,8 @@ export class FilmDetailsComponent implements OnInit {
   duracion: number;
   filmArray: Film[] = [];
   favoriteDto: CreateFavDto = {} as CreateFavDto;
+  contador = interval(1000);
+  conCont : number;
 
   constructor(
     private router: Router,
@@ -37,10 +41,19 @@ export class FilmDetailsComponent implements OnInit {
     private videosService: VideoService,
     private sanitizer: DomSanitizer,
     private auth: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.id = Number(this.router.url.split("/")[2].split("?")[0]);
+
+    this.contador.subscribe(a => {
+      this.conCont = a
+    
+      if (this.router.url.endsWith('true') && this.conCont == 1) {
+        window.location.href = `${environment.appUrl}/films/${this.id}`;
+      } 
+    })                
+
     this.filmsService.getFilmById(this.id).subscribe((a) => {
       this.film = a;
       this.duracion = Number((this.film.runtime / 60).toFixed(2));
@@ -161,30 +174,35 @@ export class FilmDetailsComponent implements OnInit {
   }
 
   markFav() {
-    if (this.filmArray.map((ratedFilm) => ratedFilm.id).includes(this.id)) {
-      this.favoriteDto.favorite = false;
-    } else {
-      this.favoriteDto.favorite = true;
-    }
 
-    this.favoriteDto.media_id = this.id;
-    this.favoriteDto.media_type = "movie";
-    this.filmsService
-      .markFavFilm(
-        Number(localStorage.getItem("account_id")),
-        this.sessionID,
-        this.favoriteDto
-      )
-      .subscribe((a) => {
-        Swal.fire({
-          position: "top",
-          icon: "success",
-          title: "Tu lista de favoritas se ha actualizado",
-          showConfirmButton: false,
-          timer: 1500,
-        }).then((a) => {
-          location.reload();
+    if (localStorage.getItem("session_id") != null) {
+      if (this.filmArray.map((ratedFilm) => ratedFilm.id).includes(this.id)) {
+        this.favoriteDto.favorite = false;
+      } else {
+        this.favoriteDto.favorite = true;
+      }
+
+      this.favoriteDto.media_id = this.id;
+      this.favoriteDto.media_type = "movie";
+      this.filmsService
+        .markFavFilm(
+          Number(localStorage.getItem("account_id")),
+          this.sessionID,
+          this.favoriteDto
+        )
+        .subscribe((a) => {
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Tu lista de favoritas se ha actualizado",
+            showConfirmButton: false,
+            timer: 1500,
+          }).then((a) => {
+            location.reload();
+          });
         });
-      });
+    } else {
+      Swal.fire("Inicia sesión para agregar a favoritas esta películas");
+    }
   }
 }
