@@ -55,7 +55,7 @@ export class PortadaComponent implements OnInit {
   requestToken() {
     this.authService.createRequestToken().subscribe(respuesta => {
       this.authToken = respuesta.request_token;
-      window.location.href=`https://www.themoviedb.org/authenticate/${this.authToken}?redirect_to=http://localhost:4200${this.router.url}`
+      window.location.href=`https://www.themoviedb.org/authenticate/${this.authToken}?redirect_to=${environment.appUrl}${this.router.url}`
     });
   }
 
@@ -108,13 +108,15 @@ export class PortadaComponent implements OnInit {
           this.sessionID = null;
           this.sessionActive = false;
           if (this.router.url.endsWith('true')) {
-              window.location.href=`http://localhost:4200${this.router.url.split('?')[0]}`;
+              window.location.href=`${environment.appUrl}${this.router.url.split('?')[0]}`;
           }else if(this.router.url.includes('rated-films')){
-            window.location.href=`http://localhost:4200/films`;
+            window.location.href=environment.appUrl;
           }else if(this.router.url.includes('favorite-films')) {
-            window.location.href=`${environment.appUrl}/films`
+            window.location.href=environment.appUrl;
+          }else if(this.router.url.includes('valoradas')){
+            window.location.href=environment.appUrl;
           }else {
-              window.location.href=`http://localhost:4200${this.router.url}`;
+              window.location.href=`${environment.appUrl}${this.router.url}`;
           }
         }
       }
