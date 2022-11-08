@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Cast } from 'src/app/interfaces/credits.interface';
-import { Films } from 'src/app/interfaces/films.interface';
+import { Film } from 'src/app/interfaces/ratedFilmsList.interface';
+
 import { FilmsService } from 'src/app/services/films.service';
 
 @Component({
@@ -20,8 +21,8 @@ export class EditTableComponent implements OnInit {
 
   constructor(private filmsService: FilmsService) { }
 
-  listadoFilms: Films[] = [];
-  listadoAllFilm: Films[] = [];
+  listadoFilms: Film[] = [];
+  listadoAllFilm: Film[] = [];
   page = 1;
   totalPages = 0
   buscarBool = false
@@ -45,7 +46,7 @@ export class EditTableComponent implements OnInit {
     return Array(this.totalPages);
   }
 
-  getFilmImg(film: Films) {
+  getFilmImg(film: Film) {
     return `https://image.tmdb.org/t/p/w500${film.poster_path}`;
   }
 

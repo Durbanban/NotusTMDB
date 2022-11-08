@@ -25,8 +25,10 @@ export class ActorService {
           });
         });
       }
-    })
+    });
     return allActorsList;
   }
+
+  
 
 }

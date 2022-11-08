@@ -9,14 +9,14 @@ export interface Actor {
     adult:                boolean;
     gender:               number;
     id:                   number;
-    known_for:            Film[];
+    known_for:            FilmActor[];
     known_for_department: KnownForDepartment;
     name:                 string;
     popularity:           number;
     profile_path:         null | string;
 }
 
-export interface Film {
+export interface FilmActor {
     adult?:            boolean;
     genre_ids:         number[];
     id:                number;
