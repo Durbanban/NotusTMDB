@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { RatedFilm } from "src/app/interfaces/ratedFilmsList.interface";
+import { Film } from "src/app/interfaces/ratedFilmsList.interface";
 import { AuthService } from "src/app/services/auth.service";
 import { FilmsService } from "src/app/services/films.service";
 import Swal from "sweetalert2";
@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
   styleUrls: ["./rated-films-list.component.css"],
 })
 export class RatedFilmsListComponent implements OnInit {
-  listadoRatedFilms: RatedFilm[] = [];
+  listadoRatedFilms: Film[] = [];
   sessionID = localStorage.getItem("session_id");
   vacioBool : boolean;
 
@@ -34,7 +34,7 @@ export class RatedFilmsListComponent implements OnInit {
     }
   }
 
-  getFilmImg(f: RatedFilm) {
+  getFilmImg(f: Film) {
     return `https://image.tmdb.org/t/p/w500${f.poster_path}`
   }
 

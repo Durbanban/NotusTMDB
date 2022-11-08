@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { CreateRateDto } from 'src/app/dto/create-rate.dto';
 import { FilmDetailsResponse } from 'src/app/interfaces/filmDetails.interface';
-import { RatedFilm } from 'src/app/interfaces/ratedFilmsList.interface';
+import { Film } from 'src/app/interfaces/ratedFilmsList.interface';
 import { Videos } from 'src/app/interfaces/videos.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { FilmsService } from 'src/app/services/films.service';
@@ -25,7 +25,7 @@ export class FilmDetailsComponent implements OnInit {
   isVal = false;
   sessionID = localStorage.getItem('session_id');
   rateValue: number;
-  ratedFilmsList: RatedFilm[] = []
+  ratedFilmsList: Film[] = []
   delButtonRate = false
   duracion : number
 
