@@ -19,8 +19,9 @@
             <p class="tituloPunt">Tu puntuación: {{ film.rating }}</p>
         </a>
         <div class="botones">
-          <button mat-raised-button style="outline: none; width: 50%">
-            <mat-icon>favorite_border</mat-icon>
+          <button (click)="marcarFav(film)" mat-raised-button style="outline: none; width: 50%">
+            <mat-icon *ngIf="!comprobarFav(film)">favorite_border</mat-icon>
+            <mat-icon *ngIf="comprobarFav(film)">favorite</mat-icon>
           </button>
           <button
             mat-raised-button

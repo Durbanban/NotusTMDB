@@ -20,7 +20,6 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 
 // no layouts views
 import { IndexComponent } from "./views/index/index.component";
-import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
 
 // components for views and layouts
@@ -49,7 +48,6 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
 import { SeriesListComponent } from "./components/series-list/series-list.component";
 import { LoginAppComponent } from './components/login-app/login-app.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { PortadaComponent } from './components/portada/portada.component';
 import { FilmListComponent } from './components/film-list/film-list.component';
 import { HttpClientModule } from "@angular/common/http";
 import { EditTableComponent } from './components/edit-table/edit-table.component';
@@ -61,6 +59,8 @@ import { CardTableSeriesComponent } from "./components/card-table-series/card-ta
 import { RatedFilmsListComponent } from './components/rated-films-list/rated-films-list.component';
 import { PopularActorsListComponent } from './components/popular-actors-list/popular-actors-list.component';
 import { ActorDetailsComponent } from './components/actor-details/actor-details.component';
+import { PortadaComponent } from "./components/portada/portada.component";
+import { LandingComponent } from './components/landing/landing.component';
 import { FavFilmsListComponent } from './components/fav-films-list/fav-films-list.component';
 
 @NgModule({
@@ -96,7 +96,6 @@ import { FavFilmsListComponent } from './components/fav-films-list/fav-films-lis
     LoginComponent,
     RegisterComponent,
     IndexComponent,
-    LandingComponent,
     ProfileComponent,
     LoginAppComponent,
     NotFoundComponent,
@@ -109,6 +108,7 @@ import { FavFilmsListComponent } from './components/fav-films-list/fav-films-lis
     CardTableSeriesComponent,
     RatedFilmsListComponent,
     ActorDetailsComponent,
+    LandingComponent,
     FavFilmsListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule,FormsModule,ReactiveFormsModule],

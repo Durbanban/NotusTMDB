@@ -54,12 +54,10 @@
                   <span class="text-sm text-blueGray-400">Duración</span>
                 </div>
                 <div class="mr-4 p-3 text-center">
-                  <span
-                    class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
-                  >
-                    {{ listadoVideos.length }}
-                  </span>
-                  <span class="text-sm text-blueGray-400">Videos</span>
+                  <button mat-raised-button (click)="markFav(film.id)" style="outline: none; height: min-content;">
+                  <mat-icon *ngIf="!comprobarFav(film.id)">favorite_border</mat-icon>
+                  <mat-icon *ngIf="comprobarFav(film.id)">favorite</mat-icon>
+                </button>
                 </div>
                 <div class="lg:mr-4 p-3 text-center">
                   <span

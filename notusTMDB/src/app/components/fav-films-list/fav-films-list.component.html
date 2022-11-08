@@ -16,7 +16,6 @@
         <img [src]="getFilmImg(film)" alt="" />
         <a class="titulo" [routerLink]="'/films/'+film.id">
             <p class="tituloP">{{ film.title }}</p>
-            <p class="tituloPunt">Tu puntuación: {{ film.rating }}</p>
         </a>
         <div class="botones">
           <button mat-raised-button style="outline: none; width: 50%" (click)="marcarFav(film.id)" >
