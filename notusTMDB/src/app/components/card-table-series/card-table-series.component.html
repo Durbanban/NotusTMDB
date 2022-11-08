@@ -1,0 +1,96 @@
+
+<body>
+  <app-portada></app-portada>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <button mat-raised-button routerLink="/series" style="position: fixed; top:85px; left: 20px; outline: none;"><mat-icon>keyboard_backspace</mat-icon></button>
+
+  <div
+    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16"
+  >
+    <div class="px-6">
+      <div class="flex flex-wrap justify-center">
+        <div class="w-full px-4 flex justify-center">
+          <div class="relative">
+            <img
+              alt="..."
+              [src]="getImgSeries(series)"
+              class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+            />
+          </div>
+        </div>
+        <div class="w-full px-4 text-center mt-20">
+          <div class="flex justify-center py-4 lg:pt-4 pt-8">
+            <div class="mr-4 p-3 text-center">
+              <span
+                class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
+              >
+                {{series.first_air_date}}
+              </span>
+              <span class="text-sm text-blueGray-400">Estreno</span>
+            </div>
+            <div class="mr-4 p-3 text-center">
+              <span
+                class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
+              >
+                {{series.vote_count}}
+              </span>
+              <span class="text-sm text-blueGray-400">Personas que les ha gustado</span>
+            </div>
+            <div class="lg:mr-4 p-3 text-center">
+              <span
+                class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
+              >
+                {{series.popularity}}
+              </span>
+              <span class="text-sm text-blueGray-400">Popularidad</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <div
+          class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase"
+        >
+          <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
+          {{series.origin_country}}
+        </div>
+        <div class="mb-2 text-blueGray-600 mt-10">
+          <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+          {{series.original_language}}
+        </div>
+        <div class="mb-2 text-blueGray-600">
+          <i class="fa-thin fa-language mr-2 text-lg text-blueGray-400"></i>
+          University of Computer Science
+        </div>
+      </div>
+      <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+        <div class="flex flex-wrap justify-center">
+          <div class="w-full lg:w-9/12 px-4">
+            <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
+              {{series.overview}}
+            </p>
+            
+          <div *ngFor="let videos of videosList">
+           
+            <iframe 
+            width="360px" 
+            height="400px"
+            [src]="getVideoTrailer(videos)"
+            title="Trailers Series"
+            frameBorder="0"
+            allow="acceleremeter; autoplay; clipboard-write; encrypted-media; grroscope; picture-in-picture"
+            allowfullscreen
+              >              
+            </iframe>
+              <span class="text-sm text-blueGray-400">Trailer</span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

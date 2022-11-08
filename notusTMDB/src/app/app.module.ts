@@ -55,8 +55,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { EditTableComponent } from './components/edit-table/edit-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
-import { FormsModule } from "@angular/forms";
 import { MaterialImportsModule } from "./material-imports/material-imports.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CardTableSeriesComponent } from "./components/card-table-series/card-table-series.component";
 import { RatedFilmsListComponent } from './components/rated-films-list/rated-films-list.component';
 import { PopularActorsListComponent } from './components/popular-actors-list/popular-actors-list.component';
 import { ActorDetailsComponent } from './components/actor-details/actor-details.component';
@@ -105,11 +106,12 @@ import { FavFilmsListComponent } from './components/fav-films-list/fav-films-lis
     FilmDetailsComponent,
     PopularActorsListComponent,
     SeriesListComponent,
+    CardTableSeriesComponent,
     RatedFilmsListComponent,
     ActorDetailsComponent,
     FavFilmsListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,  MaterialImportsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialImportsModule,FormsModule,ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

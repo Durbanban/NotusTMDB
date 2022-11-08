@@ -12,7 +12,7 @@ export interface SeriesDetailsResponse {
     in_production:        boolean;
     languages:            string[];
     last_air_date:        string;
-    last_episode_to_air:  LastEpisodeToAir;
+    last_episode_to_air:  SeriesDetails;
     name:                 string;
     next_episode_to_air:  null;
     networks:             Network[];
@@ -40,7 +40,7 @@ export interface Genres {
     name: string;
 }
 
-export interface LastEpisodeToAir {
+export interface SeriesDetails {
     air_date:        string;
     episode_number:  number;
     id:              number;

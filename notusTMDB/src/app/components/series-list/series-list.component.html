@@ -1,15 +1,33 @@
 
-<div *ngFor="let item of seriesList">
+<body>
+  <br>
+  <br>
+  <br>
 
-    <app-sidebar-new></app-sidebar-new>
-    <div class="super">
-        <div class="container">
-            <p> {{item.name}}</p>
+  <app-portada></app-portada>
 
-            <img [src]="getImgSeries(item)" alt="">
+  <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
 
-            <app-card-table></app-card-table>
 
-        </div>
+    <div *ngFor="let series of seriesList">
+  
+    <div class="content">
+    
+      <mat-card class="mat-elevation-z4">
+
+        <mat-card-content>
+
+          <img class="card-img-top" mat-card-image [src]="getImgSeries(series)">
+
+        </mat-card-content>
+        
+        <mat-card-actions>
+        
+          <button mat-button [routerLink]="['/detalles', series.id]">+ Detalles</button>
+
+      </mat-card-actions>
+      </mat-card>
     </div>
-</div>
+  </div>
+  </div>
+</body>
