@@ -57,9 +57,9 @@ const routes: Routes = [
   // no layout views
   { path: "profile", component: ProfileComponent },
   { path: "films", component: FilmListComponent},
-  {path: "detallesSeries", component: CardTableSeriesComponent},
   { path: "rated-films", component: RatedFilmsListComponent},
   { path: "series", component: SeriesListComponent},
+  { path: "detalles/:id", component: CardTableSeriesComponent},
   { path: "films/:id", component: FilmDetailsComponent},
   { path: "landing", component: LandingComponent },
   { path: "loginApp", component: LoginAppComponent },
