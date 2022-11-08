@@ -58,17 +58,17 @@
                   <span
                     class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
                   >
-                    10
+                    {{actorFilms.length}}
                   </span>
-                  <span class="text-sm text-blueGray-400">Photos</span>
+                  <span class="text-sm text-blueGray-400">Películas</span>
                 </div>
                 <div class="lg:mr-4 p-3 text-center">
                   <span
                     class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
                   >
-                    89
+                    {{actorSeries.length}}
                   </span>
-                  <span class="text-sm text-blueGray-400">Comments</span>
+                  <span class="text-sm text-blueGray-400">Series</span>
                 </div>
               </div>
             </div>
@@ -87,12 +87,14 @@
               ></i>
               {{ detallesActor.place_of_birth }}
             </div>
-            <mat-card *ngFor="let peli of actorFilmography">
-              <img [src]="getFilmImg(peli)">
-              <mat-card-content>
-                <p>{{peli.overview}}</p>
-              </mat-card-content>
-            </mat-card>
+            <p class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">Filmografía</p>
+            <div class="flex overflow-x-scroll containerFilms">
+              <mat-card class="card" routerLink="/{{getRuta(peli)}}/{{peli.id}}" *ngFor="let peli of actorFilmography">
+                <img [src]="getFilmImg(peli)" onerror="this.src='https://cdn.pixabay.com/photo/2016/03/31/18/39/generic-1294538_960_720.png'">
+                <p *ngIf="peli.media_type == 'movie'">{{peli.title}}</p>
+                <p *ngIf="peli.media_type == 'tv'">{{peli.name}}(Serie)</p>
+              </mat-card>
+            </div>
           </div>
           <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
             <div class="flex flex-wrap justify-center">

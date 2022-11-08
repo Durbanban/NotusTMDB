@@ -15,6 +15,8 @@ export class ActorDetailsComponent implements OnInit {
 
   detallesActor: ActorDetailsResponse = {} as ActorDetailsResponse;
   actorFilmography: Filmography[] = [];
+  actorFilms: Filmography[] = [];
+  actorSeries: Filmography[] = [];
   today = Date.now();
 
   constructor(private actorDetailsService: ActorDetailsService,
@@ -26,14 +28,18 @@ export class ActorDetailsComponent implements OnInit {
   }
   
   cargarActor() {
-    debugger;
     const actorID = Number(this.ruta.snapshot.paramMap.get('id'));
     this.actorDetailsService.getById(actorID).subscribe(actor => {
       this.detallesActor = actor;
-    });
-    this.creditsService.getActorFilmography(actorID).subscribe(respuesta => {
-      respuesta.cast.forEach(peli => {
-        this.actorFilmography.push(peli);
+      this.creditsService.getActorFilmography(actorID).subscribe(respuesta => {
+        this.actorFilmography = respuesta.cast;
+        this.actorFilmography.filter(peli => {
+          if(peli.media_type == 'movie') {
+            this.actorFilms.push(peli);
+          }else if(peli.media_type == 'tv') {
+            this.actorSeries.push(peli);
+          }
+        });
       });
     });
     
@@ -46,5 +52,15 @@ export class ActorDetailsComponent implements OnInit {
   getFilmImg(peli: Filmography) {
     return `https://image.tmdb.org/t/p/w500${peli.poster_path}`
   }
+
+  getRuta(peli: Filmography): string {
+    if(peli.media_type == 'movie') {
+      return 'films'
+    }else if(peli.media_type == 'tv') {
+      return 'series'
+    }
+  }
+
+  
 
 }

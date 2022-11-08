@@ -28,6 +28,7 @@ import { ProfileComponent } from "./views/profile/profile.component";
 import { RatedFilmsListComponent } from "./components/rated-films-list/rated-films-list.component";
 import { PopularActorsListComponent } from "./components/popular-actors-list/popular-actors-list.component";
 import { ActorDetailsComponent } from "./components/actor-details/actor-details.component";
+import { FavFilmsListComponent } from "./components/fav-films-list/fav-films-list.component";
 
 
 const routes: Routes = [
@@ -64,6 +65,7 @@ const routes: Routes = [
   { path: "portada", component: PortadaComponent },
   { path: "actors", component: PopularActorsListComponent },
   { path: "actors/:id", component: ActorDetailsComponent },
+  { path: "favorite-films", component: FavFilmsListComponent },
   { path: "", component: PortadaComponent, pathMatch: 'full'},
   { path: "**", component: NotFoundComponent}
 ];

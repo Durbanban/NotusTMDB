@@ -11,3 +11,16 @@ body {
 .login {
     margin-bottom: 200px;
 }
+
+.card {
+    min-width: 250px;
+    max-width: 250px;
+    cursor: pointer;
+}
+
+.card img{
+    width: 90%;
+    margin-right: 20px;
+}
+
+
