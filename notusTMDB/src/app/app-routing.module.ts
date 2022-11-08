@@ -31,6 +31,7 @@ import { LandingComponent } from "./components/landing/landing.component";
 import { FavFilmsListComponent } from "./components/fav-films-list/fav-films-list.component";
 import { RateSeriesComponent } from "./components/rate-series/rate-series.component";
 
+
 const routes: Routes = [
   // admin views
   {
@@ -69,7 +70,7 @@ const routes: Routes = [
   { path: "actors/:id", component: ActorDetailsComponent },
   { path: "", component: LandingComponent, pathMatch: 'full'},
   { path: "favorite-films", component: FavFilmsListComponent },
-  { path: "**", component: NotFoundComponent },
+  { path: "**", component: NotFoundComponent}
 ];
 
 @NgModule({
