@@ -4,7 +4,7 @@ import { ActorDetailsResponse } from 'src/app/interfaces/actor-details.interface
 import { Filmography } from 'src/app/interfaces/combined-credits.interface';
 import { ActorDetailsService } from 'src/app/services/actor-details.service';
 import { CreditsService } from 'src/app/services/credits.service';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-actor-details',

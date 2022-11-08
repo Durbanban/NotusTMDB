@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Cast } from 'src/app/interfaces/credits.interface';
 import { Film } from 'src/app/interfaces/ratedFilmsList.interface';
-
 import { FilmsService } from 'src/app/services/films.service';
 
 @Component({

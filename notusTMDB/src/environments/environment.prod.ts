@@ -3,5 +3,5 @@ export const environment = {
   API_BASE_URL: 'https://api.themoviedb.org/3',
   apiImgUrl: 'https://image.tmdb.org/t/p/w300',
   API_KEY: '0ba0b777730807c26c3194f77131d60f',
-  appUrl: 'http://localhost:4200',
+  appUrl: 'http://notus-tmdb.web.app',
 };

@@ -7,10 +7,8 @@ import {
 import { SeriesService } from "src/app/services/series.service";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
-import { Videos } from "src/app/interfaces/videos.interface";
 import { DomSanitizer } from "@angular/platform-browser";
 import { CreateRateDto } from "src/app/dto/create-rate.dto";
-import Swal from "sweetalert2";
 import { VideosSeries } from "src/app/interfaces/videosSeries.interfaces";
 
 @Component({

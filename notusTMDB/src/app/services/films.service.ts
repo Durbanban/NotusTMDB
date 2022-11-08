@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { CreateFavDto } from '../dto/create-fav-dto';
 import { CreateRateDto } from '../dto/create-rate.dto';
 import { DeleteRateResponse } from '../interfaces/deleteRate.interface';
