@@ -11,22 +11,21 @@
     <br />
     <br />
     <div class="flex flex-wrap">
-      <h1 *ngIf="vacioBool">Actualmente no tienes ninguna película valorada</h1>
-      <div class="card" *ngFor="let film of listadoRatedFilms">
+      <h1 *ngIf="vacioBool">Actualmente no tienes ninguna película en favoritos</h1>
+      <div class="card" *ngFor="let film of listadoFavFilms">
         <img [src]="getFilmImg(film)" alt="" />
         <a class="titulo" [routerLink]="'/films/'+film.id">
             <p class="tituloP">{{ film.title }}</p>
-            <p class="tituloPunt">Tu puntuación: {{ film.rating }}</p>
         </a>
         <div class="botones">
-          <button (click)="marcarFav(film)" mat-raised-button style="outline: none; width: 50%">
-            <mat-icon *ngIf="!comprobarFav(film)">favorite_border</mat-icon>
-            <mat-icon *ngIf="comprobarFav(film)">favorite</mat-icon>
+          <button mat-raised-button style="outline: none; width: 50%" (click)="marcarFav(film.id)" >
+            <mat-icon *ngIf="!comprobarRating(film)">star_border</mat-icon>
+            <mat-icon *ngIf="comprobarRating(film)">star</mat-icon>
           </button>
           <button
             mat-raised-button
             style="outline: none; width: 50%"
-            (click)="eliminarRate(film.id)"
+            (click)="eliminarRate(film)"
           >
             <mat-icon>remove_circle_outline</mat-icon>
           </button>

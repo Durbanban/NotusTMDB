@@ -1,0 +1,56 @@
+html, body{
+    width: 100%;
+    height: max-content;
+    min-height: 100vh;
+    background: brown;
+}
+
+.card{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}
+
+.botones{
+    width: 100%;
+    display: flex;
+    background: #fff;
+}
+
+.titulo{
+    width: 200px;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.616);
+    position: fixed;
+    visibility: hidden;
+}
+
+.tituloP{
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    font-weight: 800;
+    font-size: 25px;
+    margin-top: 120px;
+}
+
+.tituloPunt{
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+}
+
+.card:hover .titulo{
+    visibility: visible;
+}
+
+h1{
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    color: #fff;
+}

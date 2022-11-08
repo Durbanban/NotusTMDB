@@ -27,6 +27,7 @@ import { RatedFilmsListComponent } from "./components/rated-films-list/rated-fil
 import { PopularActorsListComponent } from "./components/popular-actors-list/popular-actors-list.component";
 import { ActorDetailsComponent } from "./components/actor-details/actor-details.component";
 import { LandingComponent } from "./components/landing/landing.component";
+import { FavFilmsListComponent } from "./components/fav-films-list/fav-films-list.component";
 
 
 const routes: Routes = [
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: "actors", component: PopularActorsListComponent },
   { path: "actors/:id", component: ActorDetailsComponent },
   { path: "", component: LandingComponent, pathMatch: 'full'},
+  { path: "favorite-films", component: FavFilmsListComponent },
   { path: "**", component: NotFoundComponent}
 ];
 

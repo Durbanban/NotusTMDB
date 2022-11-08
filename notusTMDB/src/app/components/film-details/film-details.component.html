@@ -7,10 +7,16 @@
     <title>Detalles</title>
   </head>
   <body>
-    <button mat-raised-button routerLink="/films" style="position: fixed; top:85px; left: 20px; outline: none;"><mat-icon>keyboard_backspace</mat-icon></button>
+    <button
+      mat-raised-button
+      routerLink="/films"
+      style="position: fixed; top: 85px; left: 20px; outline: none"
+    >
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
     <app-portada></app-portada>
-    <br>
-    <br>
+    <br />
+    <br />
     <div
       style="
         width: 100%;
@@ -43,34 +49,67 @@
                   <span
                     class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
                   >
-                    {{duracion}}H
+                    {{ duracion }}H
                   </span>
                   <span class="text-sm text-blueGray-400">Duración</span>
                 </div>
                 <div class="mr-4 p-3 text-center">
-                  <span
-                    class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
-                  >
-                    {{listadoVideos.length}}
-                  </span>
-                  <span class="text-sm text-blueGray-400">Videos</span>
+                  <button mat-raised-button (click)="markFav(film.id)" style="outline: none; height: min-content;">
+                  <mat-icon *ngIf="!comprobarFav(film.id)">favorite_border</mat-icon>
+                  <mat-icon *ngIf="comprobarFav(film.id)">favorite</mat-icon>
+                </button>
                 </div>
                 <div class="lg:mr-4 p-3 text-center">
                   <span
                     class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
                   >
-                  <button mat-raised-button (click)="filmfav()" style="outline: none;">
-                    <mat-icon *ngIf="favIconBool == false || isVal == false">star_border</mat-icon>
-                    <mat-icon *ngIf="isVal && favIconBool">star</mat-icon>
-                  </button>
-                  <div *ngIf="favIconBool == true">
-                    <input type="range" step="1" min="1" max="10" name="" id="" [(ngModel)]="rateValue">
-                    <p style="width: 100%; text-align: center;">{{rateValue}}</p>
-                    <div style="width: 100%; display: flex; justify-content: space-between;">
-                      <button mat-raised-button style="outline: none;" (click)="enviar()">Enviar</button>
-                      <button mat-raised-button style="outline: none;" *ngIf="delButtonRate" (click)="eliminarRate()"><mat-icon>remove_circle_outline</mat-icon></button>
+                    <button
+                      mat-raised-button
+                      (click)="filmfav()"
+                      style="outline: none"
+                    >
+                      <mat-icon *ngIf="favIconBool == false || isVal == false"
+                        >star_border</mat-icon
+                      >
+                      <mat-icon *ngIf="isVal && favIconBool">star</mat-icon>
+                    </button>
+                    <div *ngIf="favIconBool == true">
+                      <input
+                        type="range"
+                        step="1"
+                        min="1"
+                        max="10"
+                        name=""
+                        id=""
+                        [(ngModel)]="rateValue"
+                      />
+                      <p style="width: 100%; text-align: center">
+                        {{ rateValue }}
+                      </p>
+                      <div
+                        style="
+                          width: 100%;
+                          display: flex;
+                          justify-content: space-between;
+                        "
+                      >
+                        <button
+                          mat-raised-button
+                          style="outline: none"
+                          (click)="enviar()"
+                        >
+                          Enviar
+                        </button>
+                        <button
+                          mat-raised-button
+                          style="outline: none"
+                          *ngIf="delButtonRate"
+                          (click)="eliminarRate()"
+                        >
+                          <mat-icon>remove_circle_outline</mat-icon>
+                        </button>
+                      </div>
                     </div>
-                  </div>
                   </span>
                 </div>
               </div>
@@ -93,15 +132,31 @@
             </div>
             <div class="mb-2 text-blueGray-600 mt-10">
               <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-              Budget: {{ film.budget}}$
+              Budget: {{ film.budget }}$
             </div>
             <div class="mb-2 text-blueGray-600">
               <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-              Productora/s: <span *ngFor="let item of film.production_companies">{{item.name}}<span *ngIf="film.production_companies.indexOf(item) != film.production_companies.length-1">, </span></span>
+              Productora/s:
+              <span *ngFor="let item of film.production_companies"
+                >{{ item.name
+                }}<span
+                  *ngIf="
+                    film.production_companies.indexOf(item) !=
+                    film.production_companies.length - 1
+                  "
+                  >,
+                </span></span
+              >
             </div>
             <div class="mb-2 text-blueGray-600">
-                <i class="fas fa-film mr-2 text-lg text-blueGray-400"></i>
-                <span *ngFor="let item of film.genres">{{item.name}}<span *ngIf="film.genres.indexOf(item) != film.genres.length-1">, </span></span>
+              <i class="fas fa-film mr-2 text-lg text-blueGray-400"></i>
+              <span *ngFor="let item of film.genres"
+                >{{ item.name
+                }}<span
+                  *ngIf="film.genres.indexOf(item) != film.genres.length - 1"
+                  >,
+                </span></span
+              >
             </div>
           </div>
           <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
@@ -110,7 +165,7 @@
                 <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
                   {{ film.overview }}
                 </p>
-                <br>
+                <br />
                 <div
                   style="
                     display: flex;
@@ -118,9 +173,9 @@
                     width: 100%;
                     height: max-content;
                   "
-                  
                 >
-                  <iframe *ngFor="let video of listadoVideos"
+                  <iframe
+                    *ngFor="let video of listadoVideos"
                     width="560"
                     height="315"
                     [src]="getUrlVideo(video)"
@@ -128,7 +183,7 @@
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
-                    style="margin: 0 20px;"
+                    style="margin: 0 20px"
                   ></iframe>
                 </div>
               </div>
