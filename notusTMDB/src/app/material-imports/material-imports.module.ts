@@ -84,6 +84,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatAutocompleteModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatCardModule,
     MatRadioModule,
     MatSelectModule,
     MatSliderModule,

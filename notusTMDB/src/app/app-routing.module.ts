@@ -23,6 +23,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 
 // no layouts views
 import { ProfileComponent } from "./views/profile/profile.component";
+import { CardTableSeriesComponent } from "./components/card-table-series/card-table-series.component";
 import { RatedFilmsListComponent } from "./components/rated-films-list/rated-films-list.component";
 import { PopularActorsListComponent } from "./components/popular-actors-list/popular-actors-list.component";
 import { ActorDetailsComponent } from "./components/actor-details/actor-details.component";
@@ -58,6 +59,7 @@ const routes: Routes = [
   { path: "films", component: FilmListComponent},
   { path: "rated-films", component: RatedFilmsListComponent},
   { path: "series", component: SeriesListComponent},
+  { path: "detalles/:id", component: CardTableSeriesComponent},
   { path: "films/:id", component: FilmDetailsComponent},
   { path: "loginApp", component: LoginAppComponent },
   { path: "portada", component: PortadaComponent },
